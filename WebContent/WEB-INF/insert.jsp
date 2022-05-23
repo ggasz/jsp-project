@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <meta name='viewport' content="width=device-width",initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>Insert title here</title>
+<title>수강인원 등록 페이지</title>
 </head> 
 <body>
 	<%@ include file = "menu2.jsp" %>
 	<div class = "container">
-		<div class = "row">
+		<div class = "row" style="height: 461px;width: 1300px; margin-right:auto;">
 			<form method = "post" name ="insert" action="insert2.do">
 			
 			
@@ -88,7 +88,7 @@
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">결과</label>
-								<input type = "text" class="form-control"placeholder="결과" id = "co_resultId" name="co_result" maxlength="10">
+								<input  style="width:80px;height:34px; font-size:5px;" type = "text" class="form-control"placeholder="결과" id = "co_resultId" name="co_result" maxlength="10" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">출석률</label>
@@ -184,13 +184,13 @@
 					</thead>
 					</tbody>
 						<tr>
-							<th style = "text-align:center">
+							<th style = "text-align:center"> 
 								<label for="cars">입사일</label>
-								<input type = "date" class="form-control"placeholder="입사일" name="c_start" maxlength="10" value = "1900-01-01" min="0000-00-00" max="3000-12-31">
+								<input type = "date" class="form-control" id="dateId" placeholder="입사일" name="c_start" maxlength="10" value = "1900-01-01" min="0000-00-00" max="3000-12-31" onchange = adddate();>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
-								<input type = "date" class="form-control"placeholder="고용유지" name="c_maintain" maxlength="20" value = "1900-01-01" min="0000-00-00" max="3000-12-31">
+								<input style="align-content: center;" type = "text" class="form-control"placeholder="고용유지" name="c_maintain" maxlength="20" readonly >
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">퇴사여부</label>
@@ -229,8 +229,8 @@
 			</form>			
 		</div>
 	</div>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script>
+	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script> -->
      
 <script>
 
@@ -244,6 +244,19 @@
 		var year = now.getFullYear();
 		
 		insert.m_age1.value = (year-age)+1;
+	}
+	
+	function adddate(){
+		month = document.getElementById("dateId").value;
+		const today = new Date(month);
+		const nextDate = new Date( today.getFullYear(), 
+									today.getMonth()+6 , 
+									today.getDate() -1 );
+		
+		const formatted_date = nextDate.getFullYear() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getDate()
+				
+		/* const addMonth = new Date(nextDate) */
+		insert.c_maintain.value=formatted_date;
 	}
 	
 	function Attendance1(){

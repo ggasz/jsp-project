@@ -196,11 +196,11 @@
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">입사일</label>
-								<input type = "date" class="form-control" name="c_start" maxlength="10" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_start}>
+								<input type = "date" class="form-control" id = "dateId" name="c_start" maxlength="10" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_start}  onchange = adddate(); >
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
-								<input type = "date" class="form-control" name="c_maintain" maxlength="20" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_maintain}>
+								<input type = "text" class="form-control" name="c_maintain" maxlength="20" min="0000-00-00" max="3000-12-31" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">퇴사여부</label>
@@ -241,8 +241,8 @@
 			</form>			
 		</div>
 	</div>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script>
+	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="js/bootstrap.min.js"></script> -->
      
 <script>
 
@@ -256,6 +256,19 @@
 		var year = now.getFullYear();
 		
 		insert.m_age1.value = (year-age)+1;
+	}
+	
+	function adddate(){
+		month = document.getElementById("dateId").value;
+		const today = new Date(month);
+		const nextDate = new Date( today.getFullYear(), 
+									today.getMonth()+6 , 
+									today.getDate() -1 );
+		
+		const formatted_date = nextDate.getFullYear() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getDate()
+				
+		/* const addMonth = new Date(nextDate) */
+		insert.c_maintain.value=formatted_date;
 	}
 	
 	function Attendance1(){

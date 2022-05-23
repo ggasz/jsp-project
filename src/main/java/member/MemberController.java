@@ -217,6 +217,7 @@ public class MemberController extends HttpServlet {
 		
 		int conResult = coDao.coInsert(coDto);
 		System.out.println(conResult);
+		resp.sendRedirect("select.do");
 		
 	}
 	
@@ -354,7 +355,9 @@ public class MemberController extends HttpServlet {
 		coDto.setCo_certificate(certi);
 		coDto.setM_id(id);
 		
+		
 		int conReuslt = coDao.update(coDto);
+		resp.sendRedirect("select.do");
 	
 	}
 	

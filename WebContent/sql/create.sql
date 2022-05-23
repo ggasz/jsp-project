@@ -1,4 +1,4 @@
-create table company(
+  create table company(
 	c_start date,
 	c_maintain date,
 	c_end text,
@@ -53,4 +53,16 @@ create table user(
 	u_name varchar(50),
 	
 	primary key(u_email)
+);
+
+create table subject(
+	s_id int,
+	s_name varchar(20),
+	s_code varchar(20),
+	s_start date,
+	s_end date,
+	s_manage date,
+	s_professor varchar(20),
+	
+	primary key(s_id)
 );
