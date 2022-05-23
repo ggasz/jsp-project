@@ -260,7 +260,7 @@
 	
 	function adddate(){
 		month = document.getElementById("dateId").value;
-		const today = new Date(month);
+		const today = new Date(month);     
 		const nextDate = new Date( today.getFullYear(), 
 									today.getMonth()+6 , 
 									today.getDate() -1 );

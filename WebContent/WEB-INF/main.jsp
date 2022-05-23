@@ -34,8 +34,9 @@
 					<th style="background-color:#FFFFFF; text-align:center;">2021-01-15</th>
 					<th style="background-color:#FFFFFF; text-align:center;">2021-08-07</th>
 					<th style="background-color:#FFFFFF; text-align:center;">장세동</th>
-				</tr>					
+				</tr>								
 				</table>
+				<a href ="#" class="btn btn-primary pull-right">과목 추가</a>	
 			</div>
 		</div>	 			
 	
