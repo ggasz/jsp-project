@@ -36,7 +36,7 @@
 					<th style="background-color:#FFFFFF; text-align:center;">장세동</th>
 				</tr>								
 				</table>
-				<a href ="#" class="btn btn-primary pull-right">과목 추가</a>	
+				<a href ="#" class="btn btn-primary pull-right">과목추가</a>	
 			</div>
 		</div>	 			
 	
