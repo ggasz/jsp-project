@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.io.PrintWriter" %>
+<%@ page import = "subject.*" %>
+<%@ page import = "java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -20,6 +22,7 @@
 		</div>
 			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 				<tr>
+					<th style="background-color:#eeeeee; text-align:center;">번호</th>
 					<th style="background-color:#eeeeee; text-align:center;">과목이름</th>
 					<th style="background-color:#eeeeee; text-align:center;">과목코드</th>
 					<th style="background-color:#eeeeee; text-align:center;">훈련시작</th>
@@ -27,16 +30,27 @@
 					<th style="background-color:#eeeeee; text-align:center;">관리</th>
 					<th style="background-color:#eeeeee; text-align:center;">담당교수</th>					
 				</tr>
+				<%
+					SubjectDAO subjectDao = SubjectDAO.getInstance();
+					List<SubjectDTO> list = subjectDao.subjectList();
+					int a = 0;
+					for(SubjectDTO b : list){
+						a=a+1;					
+				%>
 				<tr>
-					<th style="background-color:#FFFFFF; text-align:center;">컴퓨터응용기계설계가공(CAD/CAM)</th>
-					<th style="background-color:#FFFFFF; text-align:center;">(AIG20190000253037)</th>
-					<th style="background-color:#FFFFFF; text-align:center;">2020-07-24</th>
-					<th style="background-color:#FFFFFF; text-align:center;">2021-01-15</th>
-					<th style="background-color:#FFFFFF; text-align:center;">2021-08-07</th>
-					<th style="background-color:#FFFFFF; text-align:center;">장세동</th>
-				</tr>								
+					<td><%=a %></td> 
+					<th style="background-color:#FFFFFF; text-align:center;"><a href="update.do?m_id=<%=b.getS_id()%>"><%=b.getS_name() %></a></th>  <!-- 수정필요  -->
+					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_code() %></th>
+					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_start() %></th>
+					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_end() %></th>
+					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_manage() %></th>
+					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_professor() %></th>
+				</tr>
+				<%
+					}
+				%>								
 				</table>
-				<a href ="#" class="btn btn-primary pull-right">과목추가</a>	
+				<a href ="insert.so" class="btn btn-primary pull-right">과목추가</a>	
 			</div>
 		</div>	 			
 	

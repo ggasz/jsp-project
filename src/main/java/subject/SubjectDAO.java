@@ -96,4 +96,37 @@ public class SubjectDAO {
 		 }
 		 return -1;
 	}
+	
+	public List<SubjectDTO> subjectList(){
+
+		List<SubjectDTO> list = new ArrayList<>();
+		
+		try {
+			conn = ConnectionDB.getConnection();
+			String sql = "select * from subject where s_id ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			
+			while (rs.next()) {
+				SubjectDTO tmp = new SubjectDTO();
+				tmp.setS_id(rs.getInt(1));
+				tmp.setS_name(rs.getString(2));
+				tmp.setS_code(rs.getString(3));
+				tmp.setS_start(rs.getString(4));
+				tmp.setS_end(rs.getString(5));
+				tmp.setS_manage(rs.getString(6));
+				tmp.setS_professor(rs.getString(7));
+			
+				list.add(tmp);
+				
+			}
+
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return list;
+	}
 }

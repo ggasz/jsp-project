@@ -26,11 +26,11 @@
 							<tr>
 								<th style = "text-align:center">
 									<label for="cars" >과목명</label>
-									<input type = "text" class="form-control"placeholder="과목명" name="s_name" maxlength="10">
+									<input type = "text" class="form-control"placeholder="과목명" name="s_name" maxlength="50">
 								</th>
 								<th style = "text-align:center">
 									<label for="cars" >과목코드</label>
-									<input type = "text" class="form-control"placeholder="과목코드" name="s_code" maxlength="10">
+									<input type = "text" class="form-control"placeholder="과목코드" name="s_code" maxlength="50">
 								</th>
 								<th style = "text-align:center">
 									<label for="cars" >과정시작일</label>
