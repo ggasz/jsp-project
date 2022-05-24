@@ -13,7 +13,7 @@
 	<%@ include file = "menu2.jsp" %>
 	<div class = "container">
 		<div class = "row" style="height: 461px;width: 1300px; margin-right:auto;"> <!-- 크기수정필요 -->
-			<form method = "post" name ="insert" action="insert3.so"> <!-- insert2.do 수정필요 -->
+			<form method = "post" name ="insert" action="insert3.so" onkeydown="return enterkeydown(event)" >
 			
 			
 				<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
@@ -59,17 +59,6 @@
 	>
 	<script>
 	
-function addage(){
-		
-		
-		birth = document.getElementById("birthId").value;
-		var now = new Date();
-		var age = birth.substring(0,4);
-		var year = now.getFullYear();
-		
-		insert.m_age1.value = (year-age)+1;
-	}
-	
 	function adddate(){
 		month = document.getElementById("dateid").value;
 		const today = new Date(month);
@@ -82,6 +71,12 @@ function addage(){
 		/* const addMonth = new Date(nextDate) */
 		insert.s_manage.value=formatted_date;
 	}
+	
+	function enterkeydown(e){
+		if(e.keyCode == 13)
+			return false;
+	}
+	
 	
 	</script>
 </body>

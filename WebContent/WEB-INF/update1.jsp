@@ -16,7 +16,7 @@
 
 	<div class = "container">
 		<div class = "row">
-			<form method = "post" name ="insert" action="update2.do">
+			<form method = "post" name ="insert" action="update2.do" onkeydown="return enterkeydown(event)">
 			
 			
 <!-- 수강인원 기본정보 테이블  -->
@@ -24,12 +24,12 @@
 				<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
-							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 등록</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
+							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 수정</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
 						</tr>
 					</thead>
 					</tbody>
 						<tr>
-						<input type = "text" class="form-control" name="m_id" maxlength="10" value = ${selectOne.m_id}>
+						<input type = "hidden" class="form-control" name="m_id" maxlength="10" value = ${selectOne.m_id}>
 							<th style = "text-align:center">
 								<label for="cars" >이름</label>
 								<input type = "text" class="form-control" name="m_name" maxlength="10" value = ${selectOne.m_name}>
@@ -87,7 +87,7 @@
 				<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
-							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 등록</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
+							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 수정</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
 						</tr>
 					</thead>
 					</tbody>
@@ -189,18 +189,18 @@
 				<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
-							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 등록</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
+							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 수정</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
 						</tr>
 					</thead>
 					</tbody>
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">입사일</label>
-								<input type = "date" class="form-control" id = "dateId" name="c_start" maxlength="10" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_start}  onchange = adddate(); >
+								<input type = "date" class="form-control" name="c_start" maxlength="10" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_start}>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
-								<input type = "text" class="form-control" name="c_maintain" maxlength="20" min="0000-00-00" max="3000-12-31" readonly>
+								<input type = "date" class="form-control" name="c_maintain" maxlength="20" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_maintain}>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">퇴사여부</label>
@@ -241,12 +241,8 @@
 			</form>			
 		</div>
 	</div>
-	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script> -->
      
 <script>
-
-
 	function addage(){
 		
 		
@@ -258,24 +254,10 @@
 		insert.m_age1.value = (year-age)+1;
 	}
 	
-	function adddate(){
-		month = document.getElementById("dateId").value;
-		const today = new Date(month);     
-		const nextDate = new Date( today.getFullYear(), 
-									today.getMonth()+6 , 
-									today.getDate() -1 );
-		
-		const formatted_date = nextDate.getFullYear() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getDate()
-				
-		/* const addMonth = new Date(nextDate) */
-		insert.c_maintain.value=formatted_date;
-	}
-	
 	function Attendance1(){
 		birth = document.getElementById("birthId").value;
 		att = document.getElementById("co_attendId").value;
 		item1 = document.getElementById("item1Id").value;
-
 		
 		if(birth != ""){
 			if(att == "" && item1 == ""){
@@ -374,6 +356,11 @@
 			insert.co_porf.value = "";
 		}
 		
+	}
+	
+	function enterkeydown(e){
+		if(e.keyCode == 13)
+			return false;
 	}
 	
 </script>

@@ -12,8 +12,20 @@
 <title>메인 겸 과목 리스트</title>
 </head>
 <body>
-	<%@ include file ="menu2.jsp" %>		
+	<%@ include file ="menu2.jsp" %> 
 	
+		<% 
+	if (request.getParameter("searchField") == "0" || request.getParameter("searchText") == null
+				|| request.getParameter("searchField").equals("0")
+				|| request.getParameter("searchText").equals("")) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('입력이 안 된 사항이 있습니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		}
+	%>
+			
 	<div style="width:auto" class = "container">
 		<div style="width: 1000px; margin: auto;">					
 		<div style="text-align:center;">
@@ -44,11 +56,20 @@
 					<th style="background-color:#eeeeee; text-align:center;">담당교수</th>					
 				</tr>
 				<%
-					SubjectDAO subjectDao = SubjectDAO.getInstance();
-					List<SubjectDTO> list = subjectDao.subjectList();
+					SubjectDAO subjectDAO = SubjectDAO.getInstance();
+					ArrayList<SubjectDTO> list = subjectDAO.getSearch(request.getParameter("searchField"),
+							request.getParameter("searchText"));
+					if (list.size() == 0) {
+						PrintWriter script = response.getWriter();
+						script.println("<script>");
+						script.println("alert('검색결과가 없습니다.')");
+						script.println("history.back()");
+						script.println("</script>");
+					}
 					int a = 0;
 					for(SubjectDTO b : list){
-						a=a+1;					
+						a=a+1;	
+									
 				%>
 				<tr>
 					<td><%=a %></td> 

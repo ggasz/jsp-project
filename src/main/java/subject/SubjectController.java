@@ -57,6 +57,19 @@ public class SubjectController extends HttpServlet {
 		else if(command.equals("/insert3.so")) {
 			requestInsert(req,resp);			
 		}
+		else if(command.equals("/update.so")) {
+			selectOne(req, resp);
+		}
+		else if(command.equals("/update2.so")) {
+			requestUpdate(req, resp);
+		}
+		else if(command.equals("/delete.so")) {
+			delete(req,resp);
+		}
+		else if(command.equals("/search.so")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/search.jsp");
+			rd.forward(req, resp);	
+		}
 		
 	 }
 	
@@ -85,14 +98,18 @@ public class SubjectController extends HttpServlet {
 		resp.sendRedirect("home.do");
 	
 	}
+	
 	public void selectOne(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int id = Integer.parseInt(req.getParameter("s_id"));
 		SubjectDAO sDao = SubjectDAO.getInstance();
 		SubjectDTO sDto = new SubjectDTO();
 		
-		//sDto = sDao.selectOne(id);
+		sDto = sDao.selectOne(id);
 		
 		req.setAttribute("suSelectOne", sDto);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/subjectUpdate.jsp");
+		rd.forward(req, resp);
 	}
 	
 	public void requestUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -115,13 +132,16 @@ public class SubjectController extends HttpServlet {
 		sDto.setS_manage(manage);
 		sDto.setS_professor(pro);
 		
-		//int sResult = sDao.update(sDto);
-		//System.out.print(sResult);
+		int sResult = sDao.update(sDto);
+		System.out.print(sResult);
+		resp.sendRedirect("home.do");
 	}
+	
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int id = Integer.parseInt(req.getParameter("s_id"));
 		SubjectDAO sDao = SubjectDAO.getInstance();
-		//sDao.delete(id);
+		sDao.delete(id);
+		resp.sendRedirect("home.do");
 	}
 	
 	
