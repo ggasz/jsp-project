@@ -24,7 +24,7 @@
 							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 등록</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
 						</tr>
 					</thead>
-					</tbody>
+					<tbody>
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars" >이름</label>
@@ -44,7 +44,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">나이</label>
-								<input type = "text" class="form-control"placeholder="나이" name="m_age1" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control"placeholder="나이" name="m_age1" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">성별</label>
@@ -96,7 +96,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">수료</label>
-								<input type = "text" class="form-control"placeholder="수료" id = "co_compleId" name="co_comple" maxlength="20" oninput= Attendance3(); readonly>
+								<input style="text-align:center"  type = "text" class="form-control"placeholder="수료" id = "co_compleId" name="co_comple" maxlength="20" oninput= Attendance3(); readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업</label>
@@ -130,35 +130,35 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가종치</label>
-								<input type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가중치</label>
-								<input type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input type = "text" class="form-control" value ="1" id = "co_option5Id" name="co_option5" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control" value ="1" id = "co_option5Id" name="co_option5" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가중치</label>
-								<input type = "text" class="form-control" value ="1" id = "co_option6Id" name="co_option6" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control" value ="1" id = "co_option6Id" name="co_option6" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">평가기준</label>
-								<input type = "text" class="form-control"placeholder="평가기준" name= "co_asse" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control"placeholder="평가기준" name= "co_asse" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종기준</label>
-								<input type = "text" class="form-control"placeholder="직종기준" name= "co_porf" maxlength="20" readonly>
+								<input style="text-align:center"  type = "text" class="form-control"placeholder="직종기준" name= "co_porf" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">자격증</label>
@@ -190,7 +190,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
-								<input style="align-content: center;" type = "text" class="form-control"placeholder="고용유지" name="c_maintain" maxlength="20" readonly >
+								<input style="text-align:center"  type = "text" class="form-control"placeholder="고용유지" name="c_maintain" maxlength="20" readonly >
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">퇴사여부</label>

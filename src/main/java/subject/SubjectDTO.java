@@ -3,12 +3,12 @@ package subject;
 public class SubjectDTO {
 	
 	private int s_id;
-	private String s_name;
-	private String s_code;
-	private String s_start;
-	private String s_end;
-	private String s_manage;
-	private String s_professor;
+	private String s_name;			//과정명
+	private String s_code;			//과정코드
+	private String s_start;			//과정 시작일
+	private String s_end;			//과정 종료일
+	private String s_manage;		//추후 관리일
+	private String s_professor;		//담당교수
 	
 	
 	public int getS_id() {
