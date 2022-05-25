@@ -49,7 +49,7 @@ public class ConsequenceDAO {
 	public int nextval() {
 		conn = ConnectionDB.getConnection();
 		StringBuffer query = new StringBuffer();
-		query.append("SELECT MAX(m_id) ").append("FROM member");
+		query.append("SELECT MAX(m_id) ").append("FROM Consequence");
 		
 		try {
 			pstmt = conn.prepareStatement(query.toString());

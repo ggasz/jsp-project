@@ -7,13 +7,13 @@
 <meta charset="UTF-8">
 <meta name='viewport' content="width=device-width",initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>수강인원 등록 페이지</title>
-</head> 
+<title>수강인원등록</title>
+</head>
 <body>
 	<%@ include file = "menu2.jsp" %>
 	<div class = "container">
-		<div class = "row" style="height: 461px;width: 1300px; margin-right:auto;">
-			<form method = "post" name ="insert" action="insert2.do">
+		<div class = "row">
+			<form method = "post" name ="insert" action="insert2.do" onkeydown="return enterkeydown(event)">
 			
 			
 <!-- 수강인원 기본정보 테이블  -->
@@ -24,10 +24,12 @@
 							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">수강인원 등록</th>			<!-- colspan에는 밑에 input 수 만큼(셀 합병) -->			
 						</tr>
 					</thead>
-					<tbody>
+					</tbody>
 						<tr>
+						<input type = "hidden" class="form-control" name ="s_id" value = ${suSelectOne.s_id}>
 							<th style = "text-align:center">
 								<label for="cars" >이름</label>
+								
 								<input type = "text" class="form-control"placeholder="이름" name="m_name" maxlength="10">
 							</th>
 							<th style = "text-align:center">
@@ -44,7 +46,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">나이</label>
-								<input style="text-align:center"  type = "text" class="form-control"placeholder="나이" name="m_age1" maxlength="20" readonly>
+								<input type = "text" class="form-control"placeholder="나이" name="m_age1" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">성별</label>
@@ -88,7 +90,7 @@
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">결과</label>
-								<input  style="width:80px;height:34px; font-size:5px;" type = "text" class="form-control"placeholder="결과" id = "co_resultId" name="co_result" maxlength="10" readonly>
+								<input type = "text" class="form-control"placeholder="결과" id = "co_resultId" name="co_result" maxlength="10" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">출석률</label>
@@ -96,7 +98,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">수료</label>
-								<input style="text-align:center"  type = "text" class="form-control"placeholder="수료" id = "co_compleId" name="co_comple" maxlength="20" oninput= Attendance3(); readonly>
+								<input type = "text" class="form-control"placeholder="수료" id = "co_compleId" name="co_comple" maxlength="20" oninput= Attendance3(); readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업</label>
@@ -130,35 +132,35 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input style="text-align:center"  type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly>
+								<input type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가종치</label>
-								<input style="text-align:center"  type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly>
+								<input type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input style="text-align:center"  type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly>
+								<input type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가중치</label>
-								<input style="text-align:center"  type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly>
+								<input type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input style="text-align:center"  type = "text" class="form-control" value ="1" id = "co_option5Id" name="co_option5" maxlength="20" readonly>
+								<input type = "text" class="form-control" value ="1" id = "co_option5Id" name="co_option5" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가중치</label>
-								<input style="text-align:center"  type = "text" class="form-control" value ="1" id = "co_option6Id" name="co_option6" maxlength="20" readonly>
+								<input type = "text" class="form-control" value ="1" id = "co_option6Id" name="co_option6" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">평가기준</label>
-								<input style="text-align:center"  type = "text" class="form-control"placeholder="평가기준" name= "co_asse" maxlength="20" readonly>
+								<input type = "text" class="form-control"placeholder="평가기준" name= "co_asse" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종기준</label>
-								<input style="text-align:center"  type = "text" class="form-control"placeholder="직종기준" name= "co_porf" maxlength="20" readonly>
+								<input type = "text" class="form-control"placeholder="직종기준" name= "co_porf" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">자격증</label>
@@ -184,13 +186,13 @@
 					</thead>
 					</tbody>
 						<tr>
-							<th style = "text-align:center"> 
+							<th style = "text-align:center">
 								<label for="cars">입사일</label>
-								<input type = "date" class="form-control" id="dateId" placeholder="입사일" name="c_start" maxlength="10" value = "1900-01-01" min="0000-00-00" max="3000-12-31" onchange = adddate();>
+								<input type = "date" class="form-control"placeholder="입사일" id= "dateId" name="c_start" maxlength="10" value = "1900-01-01" min="0000-00-00" max="3000-12-31" onchange = adddate()>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
-								<input style="text-align:center"  type = "text" class="form-control"placeholder="고용유지" name="c_maintain" maxlength="20" readonly >
+								<input type = "text" class="form-control"placeholder="고용유지" name="c_maintain" maxlength="20" value = "1900-01-01" min="0000-00-00" max="3000-12-31" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">퇴사여부</label>
@@ -229,12 +231,8 @@
 			</form>			
 		</div>
 	</div>
-	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script> -->
      
 <script>
-
-
 	function addage(){
 		
 		
@@ -259,11 +257,11 @@
 		insert.c_maintain.value=formatted_date;
 	}
 	
+	
 	function Attendance1(){
 		birth = document.getElementById("birthId").value;
 		att = document.getElementById("co_attendId").value;
 		item1 = document.getElementById("item1Id").value;
-
 		
 		if(birth != ""){
 			if(att == "" && item1 == ""){
@@ -362,6 +360,11 @@
 			insert.co_porf.value = "";
 		}
 		
+	}
+	
+	function enterkeydown(e){
+		if(e.keyCode == 13)
+			return false;
 	}
 	
 </script>

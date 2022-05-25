@@ -1,6 +1,7 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import company.*;
-import member.*;
-import consequence.*;
-
+import consequence.ConsequenceDAO;
+import consequence.ConsequenceDTO;
 
 
 
@@ -59,18 +59,20 @@ public class MemberController extends HttpServlet {
 		if(command.equals("/home.do")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/main.jsp");
 			rd.forward(req, resp);
-		}else if(command.equals("/insert.do")) {
+		}
+		else if(command.equals("/er.do")) {
+			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/insertAction.jsp");
+			rd.forward(req, resp);
+		}
+		else if(command.equals("/insert.do")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/insert.jsp");
 			rd.forward(req, resp);	
 		}
-		else if(command.equals("/insertAction.do")) {
-			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/insertAction.jsp");
-			rd.forward(req, resp);	
-		}
-		else if(command.equals("/insert2.do")) {			
-			requestInsert1(req,resp);
+		else if(command.equals("/insert2.do")) {
+			
 			requestInsert2(req,resp);
 			requestInsert3(req,resp);
+			requestInsert1(req,resp);
 		}
 		else if(command.equals("/select.do")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/list.jsp");
@@ -107,7 +109,7 @@ public class MemberController extends HttpServlet {
 
 		else if(command.equals("/logout.do")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/logoutAction.jsp");
-			rd.forward(req, resp);	
+			rd.forward(req, resp);
 		}
     }
     
@@ -125,6 +127,7 @@ public class MemberController extends HttpServlet {
 		String option2 = req.getParameter("m_option2");
 		String option3 = req.getParameter("m_option3");
 		String note = req.getParameter("m_note");
+		int sId = Integer.parseInt(req.getParameter("s_id"));
 		
 
 		MemberDAO memberDao = MemberDAO.getInstance();
@@ -142,10 +145,14 @@ public class MemberController extends HttpServlet {
 		dto.setM_option2(option2);
 		dto.setM_option3(option3);
 		dto.setM_note(note);
+		dto.setS_id(sId);
 		
 		int mResult = memberDao.insert(dto);
 		System.out.println(mResult);
-			
+		resp.sendRedirect("select.so?s_id="+sId);
+
+		
+		
 	}
 	
 	public void requestInsert2(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -170,14 +177,15 @@ public class MemberController extends HttpServlet {
 		cDto.setC_number(cNumber);
 		cDto.setC_manager(cManager);
 		cDto.setC_except(cExcept);
-		cDto.setM_id(companyDao.nextval());
+		cDto.setM_id(companyDao.nextval() +1);
 		
 		int cResult = companyDao.cInsert(cDto);
-		System.out.println(cResult);
+
 	}
 	
 	
 	public void requestInsert3(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		
 		String coResult = req.getParameter("co_result");
 		String coAttend = req.getParameter("co_attend");
@@ -213,12 +221,12 @@ public class MemberController extends HttpServlet {
 		coDto.setCo_asse(coAsse);
 		coDto.setCo_porf(coPorf);
 		coDto.setCo_certificate(coCer);
-		coDto.setM_id(coDao.nextval());
+		coDto.setM_id(coDao.nextval() +1);
 		
 		
 		int conResult = coDao.coInsert(coDto);
 		System.out.println(conResult);
-		resp.sendRedirect("select.do");
+
 		
 	}
 	
@@ -286,6 +294,7 @@ public class MemberController extends HttpServlet {
 		
 		int mResult = mDao.update(mDto);
 		System.out.print(mResult);
+		
 		
 	}
 	
@@ -356,14 +365,13 @@ public class MemberController extends HttpServlet {
 		coDto.setCo_certificate(certi);
 		coDto.setM_id(id);
 		
-		
 		int conReuslt = coDao.update(coDto);
-		resp.sendRedirect("select.do");
-	
+		resp.sendRedirect("select.so");
 	}
 	
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int id = Integer.parseInt(req.getParameter("m_id"));
+		int sId = Integer.parseInt(req.getParameter("s_id"));
 		MemberDAO mdao = MemberDAO.getInstance();
 		mdao.delete(id);
 		
@@ -372,6 +380,8 @@ public class MemberController extends HttpServlet {
 		
 		CompanyDAO cDao = CompanyDAO.getInstance();
 		cDao.delete(id);
+		
+		resp.sendRedirect("select.so?s_id="+sId);
 	}
 
 }

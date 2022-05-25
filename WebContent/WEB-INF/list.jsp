@@ -28,27 +28,23 @@
 <body>
 	
 	<%@ include file = "menu2.jsp" %>
-	
 <!-- 과목정보 -->
 	<div>
 		<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 			<tr>
-				<th colspan='2'>1</th>
-				<th colspan='16' style="text-align:center;">컴퓨터응용기계설계가공(CAD/CAM)A(AIG20190000253037)</th>
+				<th colspan='2'>${suSelectOne.s_id}</th>
+				<th colspan='16' style="text-align:center;">${suSelectOne.s_name} ${suSelectOne.s_code}</th>
 			</tr>
 			<tr>
 				<th colspan='20'>　</th>
 			</tr>
 			<tr>
 				<th rowspan='2'>훈련과정</th>
-				<th colspan='6' >컴퓨터응용기계설계가공(CAD/CAM)<br>(AIG20190000253037)</th>
-				<th>훈련기간</th>
-				<th>2020-07-24</th>
-				<th>~</th>
-				<th>2021-01-15</th>
-				<th>관리: 2021-08-07</th>
-				<th>담당교수</th>
-				<th>장세동</th>
+				<th>:</th>
+				<th colspan='6' >${suSelectOne.s_name}<br>${suSelectOne.s_code}</th>
+				<th>훈련기간 : ${suSelectOne.s_start} ~ ${suSelectOne.s_end}</th>
+				<th>관리: ${suSelectOne.s_manage}</th>
+				<th>담당교수 : ${suSelectOne.s_professor}</th>
 			</tr>			
 		</table>
 	</div>
@@ -116,12 +112,11 @@
 		</div>	
 	</div>
 <!-- 인원리스트  -->
-	<div style="width:auto" class = "container">   
+	<div style="width:2500px" class = "container">   
 		<div class = "row" >
 			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
-				<thead>				
- 				</thead>
- 					<tr>
+				<thead>
+					<tr>
 						<!-- 기본정보 -->
 						<th style="background-color:#eeeeee; text-align:center;">번호</th>
 						<th style="background-color:#eeeeee; text-align:center;">성명</th>
@@ -133,6 +128,7 @@
 						<th style="background-color:#eeeeee; text-align:center;">유형</th>
 						<th style="background-color:#eeeeee; text-align:center;">구분</th>
 						<th style="background-color:#eeeeee; text-align:center;">비고</th>
+
 						<!-- 수강인원결과  -->
 						<th style="background-color:#eeeeee; text-align:center;">결과</th>
 						<th style="background-color:#eeeeee; text-align:center;">출석률</th>
@@ -160,10 +156,14 @@
 						<th style="background-color:#eeeeee; text-align:center;">산정제외</th>						
 						
 						
-					</tr> 			
- 					<% 
+					</tr>
+ 				</thead>
+ 					
+ 					<%int sId = (int)request.getAttribute("id"); %>
+ 					
+ 					<%
 					MemberDAO memberDao = MemberDAO.getInstance();
-					List<MemberJoin> list = memberDao.selectList();
+					List<MemberJoin> list = memberDao.selectList(sId);
 					int a = 0;
 						for(MemberJoin b : list){
 							a =a+1;
@@ -172,7 +172,7 @@
 					<tr> 
 
 						<td><%=a %></td> 
-						<td><a style="color:#000000; text-decoration:none;" href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
+						<td><a href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
 						<td><%=b.getM_birth()%></td>
 						<td><%=b.getM_number()%></td>
 						<td><%=b.getM_area()%></td>
@@ -215,19 +215,9 @@
 					}
 			%>			
 			</table>
-			<%-- <%
-				if(pageNumber != 1){
-			%>
-				<a href="list.jsp?pageNumber=<%=pageNumber -1 %>" class="btn btn-success btn-arraw-left">이전</a>
-			<%
-				}if(memberDAO.nextPage(pageNumber + 1)){
-			%>
-				<a href="list.jsp?pageNumber=<%=pageNumber +1 %>" class="btn btn-success btn-arraw-left">다음</a> --%>
 			
-			<a href ="insert.do" class="btn btn-primary pull-right">수강인원 추가</a> <!-- 수강인원추가버튼부분 -->
+			<a href ="add.so?s_id=${suSelectOne.s_id}" class="btn btn-primary pull-right">수강인원 추가</a> <!-- 수강인원추가버튼부분 -->
 		</div>
 	</div>
-	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script> -->
 </body>
 </html>

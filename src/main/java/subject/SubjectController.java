@@ -46,10 +46,15 @@ public class SubjectController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		
 		if(command.equals("/select.so")){
-			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/.jsp");
+			selectOne(req, resp);
+			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/list.jsp");
 			rd.forward(req, resp);	
 		}
-		
+		else if(command.equals("/add.so")) {
+			selectOne(req, resp);
+			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/insert.jsp");
+			rd.forward(req, resp);	
+		}
 		else if(command.equals("/insert.so")) {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/subjectinsert.jsp");
 			rd.forward(req, resp);	
@@ -57,6 +62,7 @@ public class SubjectController extends HttpServlet {
 		else if(command.equals("/insert3.so")) {
 			requestInsert(req,resp);			
 		}
+		
 		else if(command.equals("/update.so")) {
 			selectOne(req, resp);
 		}
@@ -70,11 +76,11 @@ public class SubjectController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/search.jsp");
 			rd.forward(req, resp);	
 		}
-		
 	 }
 	
-	public void requestInsert(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 	
+	public void requestInsert(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+		
 		String name = req.getParameter("s_name");
 		String code = req.getParameter("s_code");
 		String start = req.getParameter("s_start");
@@ -107,9 +113,8 @@ public class SubjectController extends HttpServlet {
 		sDto = sDao.selectOne(id);
 		
 		req.setAttribute("suSelectOne", sDto);
+		req.setAttribute("id", sDto.getS_id());
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/subjectUpdate.jsp");
-		rd.forward(req, resp);
 	}
 	
 	public void requestUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -143,6 +148,4 @@ public class SubjectController extends HttpServlet {
 		sDao.delete(id);
 		resp.sendRedirect("home.do");
 	}
-	
-	
 }
