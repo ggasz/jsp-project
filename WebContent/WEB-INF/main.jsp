@@ -27,7 +27,7 @@
 							</select></td>
 							<td><input type="text" class="form-control"
 								placeholder="검색" name="searchText" maxlength="100"></td>
-							<td><button type="submit" class="btn btn-info">검색</button></td>
+							<td><input type="submit" class="btn btn-info" value = "검색"></td>
 						</tr>
 	
 					</table>
@@ -63,7 +63,7 @@
 					}
 				%>								
 				</table>
-				<a href ="insert.so" class="btn btn-primary pull-right">과목추가</a>	
+				<a href ="insert.so" class="btn btn-primary pull-right">과정등록</a>	
 			</div>
 		</div>	 			
 	

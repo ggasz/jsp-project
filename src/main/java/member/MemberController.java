@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import company.*;
-import consequence.ConsequenceDAO;
-import consequence.ConsequenceDTO;
+import member.*;
+import consequence.*;
+
 
 
 
@@ -66,7 +67,7 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/insertAction.jsp");
 			rd.forward(req, resp);	
 		}
-		else if(command.equals("/insert2.do")) {
+		else if(command.equals("/insert2.do")) {			
 			requestInsert1(req,resp);
 			requestInsert2(req,resp);
 			requestInsert3(req,resp);

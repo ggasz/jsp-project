@@ -205,13 +205,14 @@ public class SubjectDAO {
 	
 	public ArrayList<SubjectDTO> getSearch(String searchField, String searchText){//특정한 리스트를 받아서 반환
 			ArrayList<SubjectDTO> list = new ArrayList<>();
-	      String SQL ="select * from subject WHERE "+searchField.trim();
+	      String SQL ="select * from subject WHERE "+searchField.trim() + " like ?";
+	      //System.out.println(searchField+"/"+searchText); //데이터 입력값 확인
 	      try {
-	            if(searchText != null && !searchText.equals("") ){//이거 빼면 안 나온다ㅜ 왜지?
-	                SQL +=" LIKE '%"+searchText.trim()+"%'";
-	            }
-	            PreparedStatement pstmt=conn.prepareStatement(SQL);
-				rs=pstmt.executeQuery();//select
+	    	  conn = ConnectionDB.getConnection();
+	    	  pstmt = conn.prepareStatement(SQL);	 
+	    	  pstmt.setString(1, "%"+searchText+"%");
+	    	  rs = pstmt.executeQuery();
+	    	  
 	         while(rs.next()) {
 	        	 
 	        	 SubjectDTO tmp = new SubjectDTO();
