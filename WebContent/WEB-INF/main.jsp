@@ -12,7 +12,8 @@
 <title>메인 겸 과목 리스트</title>
 </head>
 <body>
-	<%@ include file ="menu2.jsp" %>		
+	<%@ include file ="menu2.jsp" %>
+	
 	
 	<div style="width:auto" class = "container">
 		<div style="width: 1000px; margin: auto;">					

@@ -13,6 +13,16 @@
 </head>
 <body>
 	<%@ include file ="menu2.jsp" %> 
+<!-- 비로그인 접속 x  -->
+	<%
+		if(userID == null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인을 하세요')");
+			script.println("location.href='login.do'");
+			script.println("</script>");
+		}
+	%>
 	
 		<% 
 	if (request.getParameter("searchField") == "0" || request.getParameter("searchText") == null
@@ -25,7 +35,7 @@
 			script.println("</script>");
 		}
 	%>
-			
+	 
 	<div style="width:auto" class = "container">
 		<div style="width: 1000px; margin: auto;">					
 		<div style="text-align:center;">

@@ -22,8 +22,7 @@
 		</div>
 		<div class = "collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="home.do">메인</a></li>
-				<li><a href="select.do">인원현황</a></li>
+				<li><a href="home.do">메인</a></li>				
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">

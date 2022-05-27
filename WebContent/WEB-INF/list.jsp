@@ -42,7 +42,7 @@
 				<th rowspan='2'>훈련과정</th>
 				<th>:</th>
 				<th colspan='6' >${suSelectOne.s_name}<br>${suSelectOne.s_code}</th>
-				<th>훈련기간 : ${suSelectOne.s_start} ~ ${suSelectOne.s_end}</th>
+				<th style="text-align: center;">훈련기간 : ${suSelectOne.s_start} ~ ${suSelectOne.s_end}</th>
 				<th>관리: ${suSelectOne.s_manage}</th>
 				<th>담당교수 : ${suSelectOne.s_professor}</th>
 			</tr>			

@@ -7,12 +7,22 @@
 <meta charset="UTF-8">
 <meta name='viewport' content="width=device-width",initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>Insert title here</title>
+<title>수강인원 수정</title>
 </head>
 <body>
 
 	<%@ include file = "menu2.jsp" %>
-
+	
+	<%
+		if(userID == null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인을 하세요')");
+			script.println("location.href='login.do'");
+			script.println("</script>");
+		}
+	
+	%>
 
 	<div class = "container">
 		<div class = "row">
@@ -30,7 +40,7 @@
 					</tbody>
 						<tr>
 						<input type = "hidden" class="form-control" name="m_id" maxlength="10" value = ${selectOne.m_id}>
-						<input type = "text" class="form-control" name="s_id" maxlength="10" value = ${selectOne.s_id}>
+						<input type = "hidden" class="form-control" name="s_id" maxlength="10" value = ${selectOne.s_id}>
 							<th style = "text-align:center">
 								<label for="cars" >이름</label>
 								<input type = "text" class="form-control" name="m_name" maxlength="10" value = ${selectOne.m_name}>
@@ -237,8 +247,8 @@
 						</tr>
 					</tbody>					
 				</table>
-				<input type="submit" class="btn btn-primary pull-right" value="수정"/> <!-- 수강인원추가버튼부분 -->
-				<input type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/> 								
+				<input type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/> 	
+				<input type="submit" class="btn btn-primary pull-right" style="margin-right: 10px" value="수정"/>											
 			</form>			
 		</div>
 	</div>

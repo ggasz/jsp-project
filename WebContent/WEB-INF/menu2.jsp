@@ -15,6 +15,7 @@
 			userID = (String) session.getAttribute("u_email");
 		}
 	%>
+	
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -28,9 +29,7 @@
 		</div>
 		<div class = "collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="home.do">메인</a></li>
-				<li><a href="select.do">인원현황</a></li>
-				<li><a href="insert.so">과정등록</a></li>				
+				<li><a href="home.do">메인</a></li>						
 			</ul>
 			<%
 				if(userID ==null){
