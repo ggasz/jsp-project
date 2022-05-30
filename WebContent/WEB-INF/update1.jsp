@@ -247,7 +247,7 @@
 						</tr>
 					</tbody>					
 				</table>
-				<input type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/> 	
+				<input onclick =" return confirm('정말 삭제 하시겠습니까')" type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/> 	
 				<input type="submit" class="btn btn-primary pull-right" style="margin-right: 10px" value="수정"/>											
 			</form>			
 		</div>
@@ -372,7 +372,7 @@
 	function enterkeydown(e){
 		if(e.keyCode == 13)
 			return false;
-	}
+	}	
 	
 </script>
      

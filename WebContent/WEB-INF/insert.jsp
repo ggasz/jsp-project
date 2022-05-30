@@ -71,8 +71,8 @@
 								<select name ="m_option2" id = "m_option2Id" oninput = Attendance4(),Attendance5();>
 									<option value = ""> </option>
 									<option value = "40세이상">40세이상</option>
-									<option value = "취성패1">취성패1</option>
-									<option value = "취성패2">취성패2</option>
+									<option value = "취성패1">국취지1</option>
+									<option value = "취성패2">국취지2</option>
 								</select>
 							</th>
 							<th style = "text-align:center">

@@ -87,6 +87,8 @@ public class SubjectController extends HttpServlet {
 		String end = req.getParameter("s_end");
 		String manage = req.getParameter("s_manage");
 		String professor = req.getParameter("s_professor");
+		String member = req.getParameter("s_member");
+		String empoyee = req.getParameter("s_empoyee");
 		
 		SubjectDAO subjectDao = SubjectDAO.getInstance();
 		SubjectDTO dto = new SubjectDTO();
@@ -98,6 +100,8 @@ public class SubjectController extends HttpServlet {
 		dto.setS_end(end);
 		dto.setS_manage(manage);
 		dto.setS_professor(professor);
+		dto.setS_member(member);
+		dto.setS_empoyee(empoyee);
 		
 		int sResult = subjectDao.insert(dto);
 		System.out.println(sResult);	
@@ -125,6 +129,8 @@ public class SubjectController extends HttpServlet {
 		String end = req.getParameter("s_end");
 		String manage = req.getParameter("s_manage");
 		String pro = req.getParameter("s_professor");
+		String member = req.getParameter("s_member");
+		String empoyee = req.getParameter("s_empoyee");
 		
 		SubjectDAO sDao = SubjectDAO.getInstance();
 		SubjectDTO sDto = new SubjectDTO();
@@ -136,6 +142,8 @@ public class SubjectController extends HttpServlet {
 		sDto.setS_end(end);
 		sDto.setS_manage(manage);
 		sDto.setS_professor(pro);
+		sDto.setS_member(member);
+		sDto.setS_empoyee(empoyee);
 		
 		int sResult = sDao.update(sDto);
 		System.out.print(sResult);

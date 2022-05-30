@@ -72,7 +72,7 @@ public class SubjectDAO {
 		 conn = ConnectionDB.getConnection();
 		 StringBuffer query = new StringBuffer();
 		 query.append("insert into Subject ");
-		 query.append("values (?,?,?,?,?,?,?)");
+		 query.append("values (?,?,?,?,?,?,?,?,?)");
 		 
 		 try {
 			 pstmt = conn.prepareStatement(query.toString());
@@ -83,6 +83,8 @@ public class SubjectDAO {
 			 pstmt.setString(5, dto.getS_end());
 			 pstmt.setString(6, dto.getS_manage());
 			 pstmt.setString(7, dto.getS_professor());
+			 pstmt.setString(8, dto.getS_member());
+			 pstmt.setString(9, dto.getS_empoyee());
 			
 
 			 return pstmt.executeUpdate();
@@ -134,7 +136,7 @@ public class SubjectDAO {
 		conn = ConnectionDB.getConnection();
 		StringBuffer query = new StringBuffer();
 		query.append("update subject set ");
-		query.append("s_name = ?, s_code = ?, s_start = ?, s_end = ?, s_manage = ?, s_professor = ? ");
+		query.append("s_name = ?, s_code = ?, s_start = ?, s_end = ?, s_manage = ?, s_professor = ? , s_member = ?, s_empoyee =?");
 		query.append("where s_id = ?");
 		
 		try {
@@ -145,8 +147,10 @@ public class SubjectDAO {
 			pstmt.setString(4, dto.getS_end());
 			pstmt.setString(5, dto.getS_manage());
 			pstmt.setString(6, dto.getS_professor());
+			pstmt.setString(7, dto.getS_member());
+			pstmt.setString(8, dto.getS_empoyee());
 			
-			pstmt.setInt(7, dto.getS_id());
+			pstmt.setInt(9, dto.getS_id());
 			return pstmt.executeUpdate();
 			
 			
@@ -176,6 +180,8 @@ public class SubjectDAO {
 				sb.setS_end(rs.getString(5));
 				sb.setS_manage(rs.getString(6));
 				sb.setS_professor(rs.getString(7));
+				sb.setS_member(rs.getString(8));
+				sb.setS_empoyee(rs.getString(9));
 				
 				return sb;
 			}
@@ -231,4 +237,49 @@ public class SubjectDAO {
 	      }
 	      return list;//ㄱㅔ시글 리스트 반환
 	   }
+	
+	public int getNext() {
+		String SQL="SELECT s_id from subject order by s_id DESC";//마지막 게시물 반환
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1) + 1;
+			}
+			return 1; // 첫 번째 게시물인 경우
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;//데이터베이스 오류
+	}
+	
+	public int getCount() {
+		String SQL = "select count(*) from subject";
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(SQL);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public boolean nextPage(int pageNumber) {//페이지 처리를 위한 함수
+		String SQL="SELECT * from subject where s_id = ?";
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext()-(pageNumber-1)*10);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return true;//다음 페이지로 넘어갈 수 있음
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

@@ -14,7 +14,7 @@
 <body>
 	<%@ include file ="menu2.jsp" %> 
 <!-- 비로그인 접속 x  -->
-	<%
+<%-- 	<%
 		if(userID == null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -22,7 +22,7 @@
 			script.println("location.href='login.do'");
 			script.println("</script>");
 		}
-	%>
+	%> --%>
 	
 		<% 
 	if (request.getParameter("searchField") == "0" || request.getParameter("searchText") == null
@@ -50,6 +50,7 @@
 							<td><input type="text" class="form-control"
 								placeholder="검색" name="searchText" maxlength="100"></td>
 							<td><button type="submit" class="btn btn-info">검색</button></td>
+							<a href ="insert.so" class="btn btn-primary pull-left">과목추가</a>	
 						</tr>
 	
 					</table>
@@ -83,7 +84,7 @@
 				%>
 				<tr>
 					<td><%=a %></td> 
-					<th style="background-color:#FFFFFF; text-align:center;"><a href="select.do?s_id=<%=b.getS_id()%>"><%=b.getS_name() %></a></th>  <!-- 수정필요  -->
+					<th style="background-color:#FFFFFF; text-align:center;"><a href="select.so?s_id=<%=b.getS_id()%>"><%=b.getS_name() %></a></th>  <!-- 수정필요  -->
 					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_code() %></th>
 					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_start() %></th>
 					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_end() %></th>
@@ -94,7 +95,7 @@
 					}
 				%>								
 				</table>
-				<a href ="insert.so" class="btn btn-primary pull-right">과목추가</a>	
+				
 			</div>
 		</div>	 			
 	

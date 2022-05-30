@@ -57,8 +57,8 @@
 						</tr>
 					</tbody>					
 				</table>
-				<input type="submit" class="btn btn-primary pull-right" value="수정"/>
-				<input type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.so"/> 								
+				<input onclick =" return confirm('정말 삭제 하시겠습니까')"  type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.so"/> 	
+				<input type="submit" class="btn btn-primary pull-right" value="수정"/>											
 			</form>
 <script>
 	function adddate(){

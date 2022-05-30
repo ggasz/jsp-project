@@ -13,8 +13,12 @@
 </head>
 <body>
 	<%@ include file ="menu2.jsp" %>
-	
-	
+	<%
+		int pageNumber = 1;			//기본 페이지
+		if(request.getParameter("pageNumber") != null){
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+	%>	
 	<div style="width:auto" class = "container">
 		<div style="width: 1000px; margin: auto;">					
 		<div style="text-align:center;">
@@ -29,6 +33,7 @@
 							<td><input type="text" class="form-control"
 								placeholder="검색" name="searchText" maxlength="100"></td>
 							<td><input type="submit" class="btn btn-info" value = "검색"></td>
+							<a href ="insert.so" class="btn btn-primary pull-left">과정등록</a>	
 						</tr>
 	
 					</table>
@@ -64,12 +69,21 @@
 					}
 				%>								
 				</table>
-				<a href ="insert.so" class="btn btn-primary pull-right">과정등록</a>	
+				<%
+				if(pageNumber != 1){
+			%>
+				<a href="home.do?pageNumber=<%=pageNumber -1 %>" class="btn btn-success btn-arraw-left">이전</a>
+			<%
+				}if(subjectDao.nextPage(pageNumber + 1)){
+			%>
+				<a href="home.do?pageNumber=<%=pageNumber +1 %>" class="btn btn-success btn-arraw-left">다음</a>
+			<%
+				}
+			%>				
 			</div>
-		</div>	 			
+		</div>
 	
-	
-	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
      <script src="js/bootstrap.min.js"></script> -->
 </body>
 </html>

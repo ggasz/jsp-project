@@ -1,3 +1,4 @@
+<%@page import="subject.SubjectDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.io.PrintWriter" %>
@@ -51,9 +52,9 @@
 <!-- 인원total정보 -->	
 	<div style="width:auto" class = "container">
 		<div style="width: auto;">
-			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
+			<table class="table table-striped" style="border: 1px solid #dddddd">
 				<tr>
-					<th style="background-color:#eeeeee; text-align:center;">정원</th>
+					<th style="background-color:#eeeeee; text-align:center;">수강인원</th>
 					<th style="background-color:#eeeeee; text-align:center;">모집인원</th>
 					<th style="background-color:#eeeeee; text-align:center;">수료인원</th>
 					<th style="background-color:#eeeeee; text-align:center;">중도탈락</th>
@@ -69,8 +70,8 @@
 					<th style="background-color:#eeeeee; text-align:center;">자격취득</th>
 				</tr>
 				<tr>
-					<td rowspan='2' style="background-color:#; text-align:center;">25</td>
-					<td style="background-color:#E5FFCC; text-align:center;">17명</td>
+					<td rowspan='2' valign="middle" align="center">${suSelectOne.s_member}명</td>
+					<td style="background-color:#E5FFCC; text-align:center;">명</td>
 					<td style="background-color:#E5FFCC; text-align:center;">13명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">2명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">1명</td>
@@ -100,7 +101,7 @@
 					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">88.1%</td>
+					<td style="background-color:#FFFFFF; text-align:center;">${suSelectOne.s_empoyee}%</td>
 					<td style="background-color:#eeeeee; text-align:center;">직종기준</td>
 					<td style="background-color:#FFFFFF; text-align:center;">14.75명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">113.5%</td>
@@ -171,7 +172,7 @@
 				<tbody>
 					<tr> 
 
-						<td><%=a %></td> 
+						<td id="oction1"><%=a %></td> 
 						<td><a href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
 						<td><%=b.getM_birth()%></td>
 						<td><%=b.getM_number()%></td>
@@ -219,5 +220,10 @@
 			<a href ="add.so?s_id=${suSelectOne.s_id}" class="btn btn-primary pull-right">수강인원 추가</a> <!-- 수강인원추가버튼부분 -->
 		</div>
 	</div>
+<script>
+	function onction(){
+		 $('#oction1').val() = oction2; 
+	}
+</script>
 </body>
 </html>
