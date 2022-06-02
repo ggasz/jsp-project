@@ -48,7 +48,7 @@ public class SubjectController extends HttpServlet {
 		if(command.equals("/select.so")){
 			selectOne(req, resp);
 			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/list.jsp");
-			rd.forward(req, resp);	
+			rd.forward(req, resp);
 		}
 		else if(command.equals("/add.so")) {
 			selectOne(req, resp);

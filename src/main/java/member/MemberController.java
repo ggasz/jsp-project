@@ -299,6 +299,7 @@ public class MemberController extends HttpServlet {
 		resp.sendRedirect("select.so?s_id="+sId);
 		
 		
+		
 	}
 	
 	public void requestUpdate2(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{

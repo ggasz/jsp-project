@@ -71,7 +71,7 @@
 				</tr>
 				<tr>
 					<td rowspan='2' valign="middle" align="center">${suSelectOne.s_member}명</td>
-					<td style="background-color:#E5FFCC; text-align:center;">명</td>
+					<td style="background-color:#E5FFCC; text-align:center;"><%=a%>명</td>
 					<td style="background-color:#E5FFCC; text-align:center;">13명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">2명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">1명</td>
@@ -161,18 +161,23 @@
  				</thead>
  					
  					<%int sId = (int)request.getAttribute("id"); %>
- 					
+ 					<%!
+ 						int a = 0;
+ 						int b = 0;
+ 					%>
  					<%
 					MemberDAO memberDao = MemberDAO.getInstance();
 					List<MemberJoin> list = memberDao.selectList(sId);
-					int a = 0;
+					a=0;
+					
 						for(MemberJoin b : list){
 							a =a+1;
+						
 					%>
 				<tbody>
 					<tr> 
 
-						<td id="oction1"><%=a %></td> 
+						<td id="oction1"><%=a%></td> 
 						<td><a href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
 						<td><%=b.getM_birth()%></td>
 						<td><%=b.getM_number()%></td>
@@ -212,8 +217,8 @@
 					</tr>									
 			</tbody>	
 
-			<%
-					}
+			<%	
+				}
 			%>			
 			</table>
 			
@@ -221,9 +226,7 @@
 		</div>
 	</div>
 <script>
-	function onction(){
-		 $('#oction1').val() = oction2; 
-	}
+	
 </script>
 </body>
 </html>

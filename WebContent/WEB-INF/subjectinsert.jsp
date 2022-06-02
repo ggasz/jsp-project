@@ -12,7 +12,7 @@
 <body>
 	<%@ include file = "menu2.jsp" %>
 		<%
-	if(userID == null){
+	if(userID == null){	
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인을 하세요')");

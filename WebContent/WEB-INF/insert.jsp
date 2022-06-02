@@ -284,7 +284,7 @@
 				insert.co_resultId.value = "수료취업";
 			} else if(att >= 70 && att < 80 && item1 == "O"){
 				insert.co_resultId.value = "이수취업";
-			} else if(att >=80 && item1 == ""){
+			} else if(att >=70 && item1 == "X" ){
 				insert.co_resultId.value = "수료미취업";
 			}
 		};
@@ -376,6 +376,7 @@
 		if(e.keyCode == 13)
 			return false;
 	}
+
 	
 </script>
      

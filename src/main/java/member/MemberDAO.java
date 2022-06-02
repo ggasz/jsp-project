@@ -130,7 +130,7 @@ public class MemberDAO {
 		} catch(SQLException e){
 			e.printStackTrace();
 		} finally {
-			close(conn, pstmt, rs);
+			 close(conn, pstmt, rs); 
 		}
 		return list;
 	}

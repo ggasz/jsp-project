@@ -51,8 +51,9 @@
 				</tr>
 				<%
 					SubjectDAO subjectDao = SubjectDAO.getInstance();
-					List<SubjectDTO> list = subjectDao.subjectList();
-					int a = 0;
+					List<SubjectDTO> list = subjectDao.subjectList(); 
+					/* List<SubjectDTO> list = subjectDao.getList(pageNumber); // 페이징 처리  */
+				int a = 0;
 					for(SubjectDTO b : list){
 						a=a+1;					
 				%>
@@ -64,22 +65,36 @@
 					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_end() %></th>
 					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_manage() %></th>
 					<th style="background-color:#FFFFFF; text-align:center;"><%=b.getS_professor() %></th>
-				</tr>
 				<%
+						
 					}
 				%>								
 				</table>
-				<%
-				if(pageNumber != 1){
-			%>
-				<a href="home.do?pageNumber=<%=pageNumber -1 %>" class="btn btn-success btn-arraw-left">이전</a>
-			<%
-				}if(subjectDao.nextPage(pageNumber + 1)){
-			%>
-				<a href="home.do?pageNumber=<%=pageNumber +1 %>" class="btn btn-success btn-arraw-left">다음</a>
-			<%
-				}
-			%>				
+					<div class=container style="text-align: center">
+						<%
+							if (pageNumber != 1) {//이전페이지로
+						%>
+						<a href="home.do?pageNumber=<%=pageNumber - 1%>">◀ 이전</a>
+						<%
+							}
+						%>
+						<%
+							int n = (int) (subjectDao.getCount() / 10 + 1);
+							for (int i = 1; i <= n; i++) {
+						%>
+						<a href="home.do?pageNumber=<%=i%>">|<%=i%>|
+						</a>
+						<%
+							}
+						%>
+						<%
+							if(subjectDao.nextPage(pageNumber + 1)) {//다음페이지가 존재하는ㄱ ㅏ
+						%>
+						<a href="home.do?pageNumber=<%=pageNumber + 1%>">다음 ▶</a>
+						<%
+							}
+						%>				
+				</div>				
 			</div>
 		</div>
 	
