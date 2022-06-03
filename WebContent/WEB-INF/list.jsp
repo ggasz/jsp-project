@@ -9,6 +9,7 @@
 <!-- 인원결과  -->
 <%@ page import ="consequence.*" %>
 <%@ page import = "java.util.List" %>
+<%@page import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -54,7 +55,7 @@
 		<div style="width: auto;">
 			<table class="table table-striped" style="border: 1px solid #dddddd">
 				<tr>
-					<th style="background-color:#eeeeee; text-align:center;">수강인원</th>
+					<th style="background-color:#eeeeee; text-align:center;">정원</th>
 					<th style="background-color:#eeeeee; text-align:center;">모집인원</th>
 					<th style="background-color:#eeeeee; text-align:center;">수료인원</th>
 					<th style="background-color:#eeeeee; text-align:center;">중도탈락</th>
@@ -71,43 +72,43 @@
 				</tr>
 				<tr>
 					<td rowspan='2' valign="middle" align="center">${suSelectOne.s_member}명</td>
-					<td style="background-color:#E5FFCC; text-align:center;"><%=a%>명</td>
-					<td style="background-color:#E5FFCC; text-align:center;">13명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">2명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">1명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">12명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">2명</td>
+					<td style="background-color:#E5FFCC; text-align:center;"><%=(int)a %>명</td>
+					<td style="background-color:#E5FFCC; text-align:center;"><%=(int)c %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=(int)re1 %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=(int)re2 %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re3 %>명</td> 
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re4 %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re5 %>명</td>
 					<td style="background-color:#eeeeee; text-align:center;">수료전</td>
 					<td style="background-color:#eeeeee; text-align:center;">수료후</td>
 					<td style="background-color:#eeeeee; text-align:center;">재직자</td>
-					<td rowspan='2' style="background-color:#E5FFCC; text-align:center;">13명</td>
+					<td rowspan='2' style="background-color:#E5FFCC; text-align:center;"><%=(int)re9%>명</td>
 					<td style="background-color:#eeeeee; text-align:center;">목표취업률</td>
 					<td style="background-color:#eeeeee; text-align:center;">평가기준</td>
 					<td style="background-color:#FFCCCC; text-align:center;">14.05명</td>
 					<td style="background-color:#FFCCCC; text-align:center;">108.1%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">11명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">11명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">11명</td>					
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re10 %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re11 %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=(int)cer %>명</td>				
 				</tr>
 				<tr>
-					<td style="background-color:#E5FFCC; text-align:center;">68.0%</td>
-					<td style="background-color:#E5FFCC; text-align:center;">76.5%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">11.8%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">5.9%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">0.0%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">92.3%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">15.4%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">0명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">${suSelectOne.s_empoyee}%</td>
+					<td style="background-color:#E5FFCC; text-align:center;"><%=format.format(aDiv) %>%</td>
+					<td style="background-color:#E5FFCC; text-align:center;"><%=format.format(cDiv) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv1) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv2) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv3) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv4) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv5) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re8 %>명</td> 
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re6 %>명</td> 
+					<td style="background-color:#FFFFFF; text-align:center;"><%=re7 %>명</td>
+					<td style="background-color:#FFFFFF; text-align:center;">88.1%</td>
 					<td style="background-color:#eeeeee; text-align:center;">직종기준</td>
 					<td style="background-color:#FFFFFF; text-align:center;">14.75명</td>
 					<td style="background-color:#FFFFFF; text-align:center;">113.5%</td>
 					<td style="background-color:#FFFFFF; text-align:center;">73.3%</td>
 					<td style="background-color:#FFFFFF; text-align:center;">84.6%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">64.7%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(cerDiv) %>%</td>
 				</tr>				
 			</table>
 		</div>	
@@ -161,23 +162,104 @@
  				</thead>
  					
  					<%int sId = (int)request.getAttribute("id"); %>
+ 					
  					<%!
- 						int a = 0;
- 						int b = 0;
+ 						DecimalFormat format = new DecimalFormat(".0");
+ 						double a = 0;			//모집인원
+ 						double c = 0;			//수료인원
+ 						double re1 = 0;			//중도탈락
+ 						double re2 = 0;			//조기취업
+ 						int re3 = 0;			//이수취업
+ 						int re4 = 0;			//수료취업
+ 						int re5 = 0;			//수료미취업
+ 						int re6 = 0;			//산정제외-수료후
+ 						int re7 = 0;			//산정제외-재직자
+ 						int re8 = 0;			//산정제외-수료전
+ 						double re9 = 0;			//산정인원
+ 						int re10 = 0;			//고보가입
+ 						int re11 = 0;			//수료고보
+ 						double cer = 0;			//자격취득
+ 						double aDiv = 0;		//모집인원 %값
+ 						double cDiv = 0;		//수료인원 %값
+ 						double reDiv1 = 0;		//중도탈락 %값
+ 						double reDiv2 = 0;		//조기취업 %값
+ 						double reDiv3 = 0;		//이수취업 %값
+ 						double reDiv4 = 0;		//수료취업 %값
+ 						double reDiv5 = 0;		//수료미취업 %값
+ 						double cerDiv = 0;		//자격취득 %값
+ 						
  					%>
  					<%
-					MemberDAO memberDao = MemberDAO.getInstance();
-					List<MemberJoin> list = memberDao.selectList(sId);
-					a=0;
-					
-						for(MemberJoin b : list){
-							a =a+1;
+						MemberDAO memberDao = MemberDAO.getInstance();
+						List<MemberJoin> list = memberDao.selectList(sId);
+						a = 0;
+						c = 0;
+						re1 = 0;
+						re2 = 0;
+						re3 = 0;
+						re4 = 0;
+						re5 = 0;
+						re6 = 0;
+						re7 = 0;
+						re8 = 0;
+						re9 = 0;
+						re10 = 0;
+						re11 = 0;
+						cer = 0;
+						aDiv = 0;
+						cDiv = 0;
 						
+							for(MemberJoin b : list){
+								a =a+1;
+								if(b.getCo_comple().equals("O")){
+									c = c+1;
+								}
+								if(b.getCo_result().equals("중도탈락")){
+									re1 = re1+1;
+								}
+								if(b.getCo_result().equals("조기취업")){
+									re2 = re2+1;
+								}
+								if(b.getCo_result().equals("이수취업")){
+									re3 = re3+1;
+								}
+								if(b.getCo_result().equals("수료취업")){
+									re4 = re4+1;
+								}
+								if(b.getCo_result().equals("수료미취업")){
+									re5 = re5+1;
+								}
+								if(b.getCo_certificate().equals("O")){
+									cer = cer+1;
+								}
+								if(b.getC_except().equals("산정제외") && b.getCo_comple().equals("O") && 
+										b.getM_option1().equals("실업자일반")){
+									re6 = re6+1;
+								}
+								if(b.getC_except().equals("산정제외") && b.getCo_comple().equals("O") && 
+										b.getM_option1().equals("근로자개인")){
+									re7 = re7+1;
+								}
+								if(b.getCo_insurance().equals("예정") || b.getCo_insurance().equals("O")){
+									re10 = re10+1;
+								}
+								if(	b.getCo_result().equals("수료취업") && b.getCo_insurance().equals("O") ||
+									b.getCo_result().equals("수료취업") && b.getCo_insurance().equals("예정") ||
+									b.getCo_result().equals("이수취업") && b.getCo_insurance().equals("O") ||
+									b.getCo_result().equals("이수취업") && b.getCo_insurance().equals("예정")){
+									re11 = re11+1;
+								} 
+								re8 = re7+re6;								
+								re9 = re6+re3+c;
+								 
+								
+								
 					%>
+					
 				<tbody>
 					<tr> 
 
-						<td id="oction1"><%=a%></td> 
+						<td><%=(int)a%></td> 
 						<td><a href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
 						<td><%=b.getM_birth()%></td>
 						<td><%=b.getM_number()%></td>
@@ -219,6 +301,14 @@
 
 			<%	
 				}
+					aDiv = (a/25)*100;
+					cDiv = (c/a)*100;
+					reDiv1 = (re1/a)*100; 
+					reDiv2 = (re2/a)*100;
+					cerDiv = (cer/a)*100;
+					reDiv3 = (re3/re9)*100;
+					reDiv4 = (re4/re9)*100;
+					reDiv5 = (re5/re9)*100;
 			%>			
 			</table>
 			

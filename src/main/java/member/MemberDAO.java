@@ -209,24 +209,11 @@ public class MemberDAO {
 		return null;
 	}
 	public int update (MemberDTO dto) {
-		/*
-		 * String name = selectOne(dto.getM_id()).getM_name(); String birth =
-		 * selectOne(dto.getM_id()).getM_birth(); String number =
-		 * selectOne(dto.getM_id()).getM_number(); String area =
-		 * selectOne(dto.getM_id()).getM_area(); int age1 =
-		 * selectOne(dto.getM_id()).getM_age1(); int age2 =
-		 * selectOne(dto.getM_id()).getM_age2(); String sex =
-		 * selectOne(dto.getM_id()).getM_sex(); String option1 =
-		 * selectOne(dto.getM_id()).getM_option1(); String option2 =
-		 * selectOne(dto.getM_id()).getM_option2(); String option3 =
-		 * selectOne(dto.getM_id()).getM_option3(); String note =
-		 * selectOne(dto.getM_id()).getM_note();
-		 */
 		
 		conn = ConnectionDB.getConnection();
 		StringBuffer query = new StringBuffer();
 		query.append("update member set ");
-		query.append("m_name = ?, m_birth = ?, m_number = ?, m_area = ?, m_age1 = ?, m_age2 = ?, m_sex = ?, m_option1 = ?, m_option2 = ?, m_option3 = ?, m_note= ? ,  s_id=?");
+		query.append("m_name = ?, m_birth = ?, m_number = ?, m_area = ?, m_age1 = ?, m_age2 = ?, m_sex = ?, m_option1 = ?, m_option2 = ?, m_option3 = ?, m_note= ?, s_id = ? ");
 		query.append("where m_id = ?");
 		
 		try {

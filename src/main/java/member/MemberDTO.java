@@ -1,19 +1,19 @@
 package member;
 
 public class MemberDTO {
-	private int m_id;
-	private String m_name;
-	private String m_birth;
-	private String m_number;
-	private String m_area;
-	private int m_age1;
-	private int m_age2;
-	private String m_sex;
-	private String m_option1;
-	private String m_option2;
-	private String m_option3;
-	private String m_note;
-	private int s_id;
+	private int m_id;			
+	private String m_name;			//이름
+	private String m_birth;			//생년월일
+	private String m_number;		//전화번호
+	private String m_area;			//지역
+	private int m_age1;				//나이
+	private int m_age2;				//만나이
+	private String m_sex;			//성별
+	private String m_option1;		//유형
+	private String m_option2;		//구분
+	private String m_option3;		//대상구분
+	private String m_note;			//비고
+	private int s_id;				//수강번호
 	
 	
 	

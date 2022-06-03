@@ -8,7 +8,7 @@ public class CompanyDTO {
 	private String c_address ;
 	private String c_number;
 	private String c_manager;
-	private String c_except;
+	private String c_except;		//산정제외
 	private int m_id;
 	
 	

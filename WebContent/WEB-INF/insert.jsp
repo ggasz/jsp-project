@@ -22,7 +22,7 @@
 	}
 	%>
 	<div class = "container">
-		<div class = "row">
+		<div class = "row" style="width: 1500px; margin-left: -210px;" >
 			<form method = "post" name ="insert" action="insert2.do" onkeydown="return enterkeydown(event)">
 			
 			
@@ -63,18 +63,18 @@
 								<input type = "text" class="form-control"placeholder="성별" name="m_sex" maxlength="20">
 							</th>
 							<th style = "text-align:center">
-								<label for="cars">유형</label>
-								<input type = "text" class="form-control"placeholder="유형" name="m_option1" maxlength="20">
-							</th>
-							<th style = "text-align:center">
 								<label for="cars">구분</label>
-								<select name ="m_option2" id = "m_option2Id" oninput = Attendance4(),Attendance5();>
+								<select name ="m_option2" id = "m_option2Id" style ="width:90px; height:30px" oninput = Attendance4(),Attendance5();>
 									<option value = ""> </option>
 									<option value = "40세이상">40세이상</option>
 									<option value = "취성패1">국취지1</option>
 									<option value = "취성패2">국취지2</option>
 								</select>
 							</th>
+							<th style = "text-align:center">
+								<label for="cars">유형</label>
+								<input type = "text" class="form-control"placeholder="유형" name="m_option1" maxlength="20">
+							</th>							
 							<th style = "text-align:center">
 								<label for="cars">대상구분</label>
 								<input type = "text" class="form-control"placeholder="대상구분" name="m_option3" maxlength="20">
@@ -112,7 +112,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업</label>
-								<select name ="co_employ" id = "item1Id" oninput= Attendance1(),Attendance3(),Attendance5()>
+								<select name ="co_employ" id = "item1Id" style ="width:90px; height:30px; text-align: center;" oninput= Attendance1(),Attendance3(),Attendance5()>
 									<option value = ""> </option>
 									<option value = "O">O</option>
 									<option value = "X">X</option>
@@ -122,7 +122,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">동일</label>
-								<select name ="co_same" id = "item2Id">
+								<select name ="co_same" id = "item2Id" style ="width:90px; height:30px; text-align: center;">
 									<option value = ""> </option>
 									<option value = "O">O</option>
 									<option value = "X">X</option>
@@ -132,7 +132,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용보험</label>
-								<select name ="co_insurance" id= "item3Id" onchange= Attendance2(),Attendance5();>
+								<select name ="co_insurance" id= "item3Id" style ="width:90px; height:30px; text-align: center;" onchange= Attendance2(),Attendance5();>
 									<option value = ""> </option>
 									<option value = "O">O</option>
 									<option value = "X">X</option>
@@ -172,9 +172,9 @@
 								<label for="cars">직종기준</label>
 								<input type = "text" class="form-control"placeholder="직종기준" name= "co_porf" maxlength="20" readonly>
 							</th>
-							<th style = "text-align:center">
+							<th style = "text-align:center" style ="width:90px; height:30px">
 								<label for="cars">자격증</label>
-								<select name ="co_certificate">
+								<select name ="co_certificate" style ="width:90px; height:30px; text-align: center;">
 									<option value = ""> </option>
 									<option value = "O">O</option>
 									<option value = "X">X</option>
@@ -222,7 +222,7 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업전담제</label>
-								<select id="cars" name="c_manager"> <!-- 값 수정 다해야함 -->
+								<select id="cars" name="c_manager" style ="width:90px; height:30px; text-align: center;"> <!-- 값 수정 다해야함 -->
 									<option value=""></option>
 									<option value="팀장">팀장</option>
 									<option value="교수">교수</option> 
@@ -232,7 +232,10 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">산정제외</label>
-								<input type = "text" class="form-control"placeholder="산정제외" name="c_except" maxlength="20">
+								<select id="cars" name="c_except" style ="width:90px; height:30px"> <!-- 값 수정 다해야함 -->
+									<option value=""></option>
+									<option value="산정제외">산정제외</option>									
+								</select>
 							</th>
 						</tr>
 					</tbody>					
@@ -277,14 +280,14 @@
 			if(att == "" && item1 == ""){
 				insert.co_resultId.value = "훈련중";
 			} else if(att < 80 && item1 == "" ){
-				insert.co_resultId.value = "중도탈락";
+				insert.co_resultId.value = "중도탈락";	
 			} else if(att < 70 && item1 == "O"){
 				insert.co_resultId.value = "조기취업";
 			} else if(att >= 80 && item1 == "O"){
 				insert.co_resultId.value = "수료취업";
 			} else if(att >= 70 && att < 80 && item1 == "O"){
 				insert.co_resultId.value = "이수취업";
-			} else if(att >=70 && item1 == "X" ){
+			} else if(att >=80 && item1 == "" ){
 				insert.co_resultId.value = "수료미취업";
 			}
 		};

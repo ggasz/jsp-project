@@ -7,25 +7,15 @@
 <meta charset="UTF-8">
 <meta name='viewport' content="width=device-width",initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>수강인원 수정</title>
+<title>학생정보 수정 및 삭제</title>
 </head>
 <body>
 
 	<%@ include file = "menu2.jsp" %>
-	
-	<%
-		if(userID == null){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('로그인을 하세요')");
-			script.println("location.href='login.do'");
-			script.println("</script>");
-		}
-	
-	%>
+
 
 	<div class = "container">
-		<div class = "row">
+		<div class = "row" style="width : 1500px; margin-left : -200px;">
 			<form method = "post" name ="insert" action="update2.do" onkeydown="return enterkeydown(event)">
 			
 			
@@ -43,15 +33,15 @@
 						<input type = "hidden" class="form-control" name="s_id" maxlength="10" value = ${selectOne.s_id}>
 							<th style = "text-align:center">
 								<label for="cars" >이름</label>
-								<input type = "text" class="form-control" name="m_name" maxlength="10" value = ${selectOne.m_name}>
+								<input type = "text" class="form-control" name="m_name" maxlength="10" value = "${selectOne.m_name}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">생년월일</label>
-								<input type = "date" id = "birthId" class="form-control"name="m_birth" min="0000-00-00" max="3000-12-31" maxlength="20" onchange = addage() value = ${selectOne.m_birth} >
+								<input type = "date" id = "birthId" class="form-control"name="m_birth" min="0000-00-00" max="3000-12-31" maxlength="20" onchange = addage() value = "${selectOne.m_birth}" >
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">전화번호</label>
-								<input type = "text" class="form-control" name="m_number" maxlength="20" value =${selectOne.m_number}>
+								<input type = "text" class="form-control" name="m_number" maxlength="20" value = "${selectOne.m_number}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">지역</label>
@@ -59,34 +49,35 @@
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">나이</label>
-								<input style="text-align:center" type = "text" class="form-control" name="m_age1" maxlength="20" readonly value =${selectOne.m_age1}>
-								<input type = "hidden" class="form-control" name="m_age2" maxlength="20" readonly value =${selectOne.m_age2}>
+								<input style="text-align:center" type = "text" class="form-control" name="m_age1" maxlength="20" readonly value ="${selectOne.m_age1}">
+								<input type = "hidden" class="form-control" name="m_age2" maxlength="20" readonly value ="${selectOne.m_age2}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">성별</label>
-								<input type = "text" class="form-control" name="m_sex" maxlength="20" value =${selectOne.m_sex}>
-							</th>
-							<th style = "text-align:center">
-								<label for="cars">유형</label>
-								<input type = "text" class="form-control" name="m_option1" maxlength="20" value = ${selectOne.m_option1}>
+								<input type = "text" class="form-control" name="m_sex" maxlength="20" value ="${selectOne.m_sex}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">구분</label>
 								<select name ="m_option2" id = "m_option2Id" oninput = Attendance4(),Attendance5()>
 									<option value = ""> </option>
 									<option value = "40세이상">40세이상</option>
-									<option value = "취성패1">취성패1</option>
-									<option value = "취성패2">취성패2</option>
-									<option hidden value = ${selectOne.m_option2} selected>${selectOne.m_option2}</option>
+									<option value = "국취지1">국취지1</option>
+									<option value = "국취지2">국취지2</option>
+									<option hidden value = "${selectOne.m_option2}" selected>${selectOne.m_option2}</option>
+									
 								</select>
 							</th>
 							<th style = "text-align:center">
+								<label for="cars">유형</label>
+								<input type = "text" class="form-control" name="m_option1" maxlength="20" value = "${selectOne.m_option1}">
+							</th>							
+							<th style = "text-align:center">
 								<label for="cars">대상구분</label>
-								<input type = "text" class="form-control" name="m_option3" maxlength="20" value =${selectOne.m_option3}>
+								<input type = "text" class="form-control" name="m_option3" maxlength="20" value ="${selectOne.m_option3}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">비고</label>
-								<input type = "text" class="form-control" name="m_note" maxlength="20" value =${selectOne.m_note}>
+								<input type = "text" class="form-control" name="m_note" maxlength="20" value ="${selectOne.m_note}">
 							</th>
 							
 						</tr>
@@ -105,15 +96,15 @@
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">결과</label>
-								<input style="width:80px; font-size:5px;" type = "text" class="form-control" id = "co_resultId" name="co_result" maxlength="10" value =${coSelectOne.co_result}>
+								<input style="width:80px; font-size:5px;" type = "text" class="form-control" id = "co_resultId" name="co_result" maxlength="10" value ="${coSelectOne.co_result}" readonly>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">출석률</label>
-								<input type = "text" class="form-control" id = "co_attendId" name="co_attend" maxlength="20" oninput= Attendance1(),Attendance3(),Attendance5() value =${coSelectOne.co_attend}>
+								<input type = "text" class="form-control" id = "co_attendId" name="co_attend" maxlength="20" oninput= Attendance1(),Attendance3(),Attendance5() value ="${coSelectOne.co_attend}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">수료</label>
-								<input type = "text" class="form-control" id = "co_compleId" name="co_comple" maxlength="20" oninput= Attendance3(); readonly value=${coSelectOne.co_comple}>
+								<input type = "text" class="form-control" id = "co_compleId" name="co_comple" maxlength="20" oninput= Attendance3(); readonly value= "${coSelectOne.co_comple}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업</label>
@@ -123,7 +114,7 @@
 									<option value = "X">X</option>
 									<option value = "예정">예정</option>
 									<option value = "가능">가능</option>
-									<option hidden value = ${coSelectOne.co_employ} selected>${coSelectOne.co_employ}</option>
+									<option hidden value = "${coSelectOne.co_employ}" selected>${coSelectOne.co_employ}</option>
 								</select>
 							</th>
 							<th style = "text-align:center">
@@ -133,52 +124,52 @@
 									<option value = "O">O</option>
 									<option value = "X">X</option>
 									<option value = "예정">예정</option>
-									<option hidden value = ${coSelectOne.co_same} selected>${coSelectOne.co_same}</option>
+									<option hidden value = "${coSelectOne.co_same}" selected>${coSelectOne.co_same}</option>
 								</select>
 							
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용보험</label>
-								<select name ="co_insurance" id= "item3Id" onchange= Attendance2(),Attendance5();>
+								<select name ="co_insurance" id= "item3Id" onchange= Attendance2(),Attendance5()>
 									<option value = ""> </option>
 									<option value = "O">O</option>
 									<option value = "X">X</option>
 									<option value = "창업">창업</option>
 									<option value = "예정">예정</option>
-									<option hidden value = ${coSelectOne.co_insurance} selected>${coSelectOne.co_insurance}</option>
+									<option hidden value = "${coSelectOne.co_insurance}" selected>${coSelectOne.co_insurance}</option>
 								</select>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly value =${coSelectOne.co_option1}>
+								<input type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly value ="${coSelectOne.co_option1}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가종치</label>
-								<input type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly value =${coSelectOne.co_option2}>
+								<input type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly value ="${coSelectOne.co_option2}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly value =${coSelectOne.co_option3}>
+								<input type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly value ="${coSelectOne.co_option3}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가중치</label>
-								<input type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly value =${coSelectOne.co_option4}>
+								<input type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly value ="${coSelectOne.co_option4}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업가중치</label>
-								<input type = "text" class="form-control" id = "co_option5Id" name="co_option5" maxlength="20" readonly value =${coSelectOne.co_option5}>
+								<input type = "text" class="form-control" id = "co_option5Id" name="co_option5" maxlength="20" readonly value ="${coSelectOne.co_option5}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종가중치</label>
-								<input type = "text" class="form-control" id = "co_option6Id" name="co_option6" maxlength="20" readonly value =${coSelectOne.co_option6}>
+								<input type = "text" class="form-control" id = "co_option6Id" name="co_option6" maxlength="20" readonly value ="${coSelectOne.co_option6}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">평가기준</label>
-								<input type = "text" class="form-control" name= "co_asse" maxlength="20" readonly value =${coSelectOne.co_asse}>
+								<input type = "text" class="form-control" name= "co_asse" maxlength="20" readonly value ="${coSelectOne.co_asse}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">직종기준</label>
-								<input type = "text" class="form-control" name= "co_porf" maxlength="20" readonly value =${coSelectOne.co_porf}>
+								<input type = "text" class="form-control" name= "co_porf" maxlength="20" readonly value ="${coSelectOne.co_porf}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">자격증</label>
@@ -187,7 +178,7 @@
 									<option value = "O">O</option>
 									<option value = "X">X</option>
 									<option value = "예정">예정</option>
-									<option hidden value = ${coSelectOne.co_certificate} selected>${coSelectOne.co_certificate}</option>
+									<option hidden value = "${coSelectOne.co_certificate}" selected>${coSelectOne.co_certificate}</option>
 								</select>
 								
 							
@@ -207,27 +198,27 @@
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">입사일</label>
-								<input type = "date" class="form-control" name="c_start" maxlength="10" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_start}>
+								<input type = "date" class="form-control" name="c_start" maxlength="10" min="0000-00-00" max="3000-12-31" value = "${cSelectOne.c_start}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
-								<input type = "date" class="form-control" name="c_maintain" maxlength="20" min="0000-00-00" max="3000-12-31" value = ${cSelectOne.c_maintain}>
+								<input type = "date" class="form-control" name="c_maintain" maxlength="20" min="0000-00-00" max="3000-12-31" value = "${cSelectOne.c_maintain}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">퇴사여부</label>
-								<input type = "text" class="form-control" name="c_end" maxlength="20" value = ${cSelectOne.c_end}>
+								<input type = "text" class="form-control" name="c_end" maxlength="20" value = "${cSelectOne.c_end}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">업체명</label>
-								<input type = "text" class="form-control" name="c_name" maxlength="20" value = ${cSelectOne.c_name}>
+								<input type = "text" class="form-control" name="c_name" maxlength="20" value = "${cSelectOne.c_name}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">주소</label>
-								<input type = "text" class="form-control" name="c_address" maxlength="20" value = ${cSelectOne.c_address}>
+								<input type = "text" class="form-control" name="c_address" maxlength="20" value = "${cSelectOne.c_address}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">전화번호</label>
-								<input type = "text" class="form-control" name="c_number" maxlength="20" value = ${cSelectOne.c_number}>
+								<input type = "text" class="form-control" name="c_number" maxlength="20" value = "${cSelectOne.c_number}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">취업전담제</label>
@@ -237,18 +228,18 @@
 									<option value="교수">교수</option> 
 									<option value="과장">과장</option>
 									<option value="정T">정T</option>
-									<option hidden value = ${cSelectOne.c_manager} selected>${cSelectOne.c_manager}</option>
+									<option hidden value = "${cSelectOne.c_manager}" selected>${cSelectOne.c_manager}</option>
 								</select>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">산정제외</label>
-								<input type = "text" class="form-control" name="c_except" maxlength="20" value = ${cSelectOne.c_except}>
+								<input type = "text" class="form-control" name="c_except" maxlength="20" value = "${cSelectOne.c_except}">
 							</th>
 						</tr>
 					</tbody>					
 				</table>
-				<input onclick =" return confirm('정말 삭제 하시겠습니까')" type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/> 	
-				<input type="submit" class="btn btn-primary pull-right" style="margin-right: 10px" value="수정"/>											
+				<input onclick = "return confirm('정말 삭제 하시겠습니까?')" type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/>
+				<input type="submit" class="btn btn-primary pull-right" value="수정" style="margin-right : 10px;"/>							
 			</form>			
 		</div>
 	</div>
@@ -336,7 +327,7 @@
 	function Attendance4(){
 		type2 = document.getElementById("m_option2Id").value;
 		
-		if(type2 == "취성패1"){
+		if(type2 == "국취지1"){
 			insert.co_option5.value = 1.5;
 			insert.co_option6.value = 1.5;
 		} else if (type2 == "40세이상"){
@@ -372,7 +363,8 @@
 	function enterkeydown(e){
 		if(e.keyCode == 13)
 			return false;
-	}	
+	}
+	
 	
 </script>
      
