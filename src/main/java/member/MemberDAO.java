@@ -255,21 +255,6 @@ public class MemberDAO {
 			close(conn, pstmt, null);
 		}
 		return result;
-	}
-	
-	public int delete2(int s_id) {
-		String sql = "delete from member where s_id = ?";
-		
-		try {
-			conn = ConnectionDB.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, s_id);
-			result = pstmt.executeUpdate();
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			close(conn, pstmt, null);
-		}
-		return result;
-	}
+	}	
+
 }

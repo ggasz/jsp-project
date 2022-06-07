@@ -161,8 +161,9 @@ public class SubjectController extends HttpServlet {
 		int sid = Integer.parseInt(req.getParameter("s_id"));
 		//int id = Integer.parseInt(req.getParameter("m_id"));
 		
-		MemberDAO mdao = MemberDAO.getInstance();
-		mdao.delete2(sid);
+		/*
+		 * MemberDAO mdao = MemberDAO.getInstance(); mdao.delete2(sid);
+		 */
 		
 		/*
 		 * ConsequenceDAO coDao = ConsequenceDAO.getInstance(); coDao.delete(id);
@@ -170,8 +171,10 @@ public class SubjectController extends HttpServlet {
 		 * CompanyDAO cDao = CompanyDAO.getInstance(); cDao.delete(id);
 		 */
 		
-		SubjectDAO sDao = SubjectDAO.getInstance();
-		sDao.delete(sid);
+		
+		 SubjectDAO sDao = SubjectDAO.getInstance(); 
+		 sDao.delete2(sid);
+		 sDao.delete(sid);
 		
 		resp.sendRedirect("home.do");
 	}
