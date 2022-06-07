@@ -202,6 +202,7 @@ public class MemberController extends HttpServlet {
 		String coAsse = req.getParameter("co_asse");
 		String coPorf = req.getParameter("co_porf");
 		String coCer = req.getParameter("co_certificate");
+		//int sId = Integer.parseInt(req.getParameter("s_id"));
 		
 		ConsequenceDAO coDao = ConsequenceDAO.getInstance();
 		ConsequenceDTO coDto = new ConsequenceDTO();
@@ -221,6 +222,7 @@ public class MemberController extends HttpServlet {
 		coDto.setCo_asse(coAsse);
 		coDto.setCo_porf(coPorf);
 		coDto.setCo_certificate(coCer);
+		//coDto.setS_id(sId);
 		coDto.setM_id(coDao.nextval() +1);
 		
 		
@@ -348,6 +350,7 @@ public class MemberController extends HttpServlet {
 		String porf = req.getParameter("co_porf");
 		String certi = req.getParameter("co_certificate");
 		int id = Integer.parseInt(req.getParameter("m_id"));
+		//int sId = Integer.parseInt(req.getParameter("s_id"));
 		
 		ConsequenceDAO coDao = ConsequenceDAO.getInstance();
 		ConsequenceDTO coDto = new ConsequenceDTO();
@@ -368,6 +371,7 @@ public class MemberController extends HttpServlet {
 		coDto.setCo_porf(porf);
 		coDto.setCo_certificate(certi);
 		coDto.setM_id(id);
+		//coDto.setS_id(sId);
 		
 		int conReuslt = coDao.update(coDto);
 		

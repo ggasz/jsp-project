@@ -35,7 +35,7 @@
 		<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 			<tr>
 				<th colspan='2'>${suSelectOne.s_id}</th>
-				<th colspan='16' style="text-align:center;">${suSelectOne.s_name} ${suSelectOne.s_code}</th>
+				<th colspan='16' style="text-align:center;"><a href="update.so?s_id=${suSelectOne.s_id}">${suSelectOne.s_name}${suSelectOne.s_code}</a></th>
 			</tr>
 			<tr>
 				<th colspan='20'>　</th>
@@ -85,8 +85,8 @@
 					<td rowspan='2' style="background-color:#E5FFCC; text-align:center;"><%=(int)re9%>명</td>
 					<td style="background-color:#eeeeee; text-align:center;">목표취업률</td>
 					<td style="background-color:#eeeeee; text-align:center;">평가기준</td>
-					<td style="background-color:#FFCCCC; text-align:center;">14.05명</td>
-					<td style="background-color:#FFCCCC; text-align:center;">108.1%</td>
+					<td style="background-color:#FFCCCC; text-align:center;">명</td>
+					<td style="background-color:#FFCCCC; text-align:center;">%</td>
 					<td style="background-color:#FFFFFF; text-align:center;"><%=re10 %>명</td>
 					<td style="background-color:#FFFFFF; text-align:center;"><%=re11 %>명</td>
 					<td style="background-color:#FFFFFF; text-align:center;"><%=(int)cer %>명</td>				
@@ -102,12 +102,12 @@
 					<td style="background-color:#FFFFFF; text-align:center;"><%=re8 %>명</td> 
 					<td style="background-color:#FFFFFF; text-align:center;"><%=re6 %>명</td> 
 					<td style="background-color:#FFFFFF; text-align:center;"><%=re7 %>명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">88.1%</td>
+					<td style="background-color:#FFFFFF; text-align:center;">${suSelectOne.s_empoyee}%</td>
 					<td style="background-color:#eeeeee; text-align:center;">직종기준</td>
-					<td style="background-color:#FFFFFF; text-align:center;">14.75명</td>
-					<td style="background-color:#FFFFFF; text-align:center;">113.5%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">73.3%</td>
-					<td style="background-color:#FFFFFF; text-align:center;">84.6%</td>
+					<td style="background-color:#FFFFFF; text-align:center;">명</td>
+					<td style="background-color:#FFFFFF; text-align:center;">%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv6) %>%</td>
+					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(reDiv7) %>%</td>
 					<td style="background-color:#FFFFFF; text-align:center;"><%=format.format(cerDiv) %>%</td>
 				</tr>				
 			</table>
@@ -186,7 +186,10 @@
  						double reDiv3 = 0;		//이수취업 %값
  						double reDiv4 = 0;		//수료취업 %값
  						double reDiv5 = 0;		//수료미취업 %값
+ 						double reDiv6 = 0;		//고보가입 %값
+ 						double reDiv7 = 0;		//수료고보 %값
  						double cerDiv = 0;		//자격취득 %값
+ 						
  						
  					%>
  					<%
@@ -309,6 +312,8 @@
 					reDiv3 = (re3/re9)*100;
 					reDiv4 = (re4/re9)*100;
 					reDiv5 = (re5/re9)*100;
+					reDiv6 = (re10/(re2+re3+re4+re5))*100;
+					reDiv7 = (re11/re9)*100;
 			%>			
 			</table>
 			

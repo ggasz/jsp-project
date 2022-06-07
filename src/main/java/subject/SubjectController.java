@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import company.*;
+import consequence.*;
+import member.*;
+
 /**
  * Servlet implementation class SubjectController
  */
@@ -65,6 +69,8 @@ public class SubjectController extends HttpServlet {
 		
 		else if(command.equals("/update.so")) {
 			selectOne(req, resp);
+			RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/subjectUpdate.jsp");
+			rd.forward(req, resp);	
 		}
 		else if(command.equals("/update2.so")) {
 			requestUpdate(req, resp);
@@ -117,9 +123,10 @@ public class SubjectController extends HttpServlet {
 		sDto = sDao.selectOne(id);
 		
 		req.setAttribute("suSelectOne", sDto);
-		req.setAttribute("id", sDto.getS_id());
+		req.setAttribute("id", sDto.getS_id());	
 		
-	}
+		
+	}	
 	
 	public void requestUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int id = Integer.parseInt(req.getParameter("s_id"));
@@ -151,9 +158,21 @@ public class SubjectController extends HttpServlet {
 	}
 	
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		int id = Integer.parseInt(req.getParameter("s_id"));
+		int sid = Integer.parseInt(req.getParameter("s_id"));
+		//int id = Integer.parseInt(req.getParameter("m_id"));
+		
+		MemberDAO mdao = MemberDAO.getInstance();
+		mdao.delete2(sid);
+		
+		/*
+		 * ConsequenceDAO coDao = ConsequenceDAO.getInstance(); coDao.delete(id);
+		 * 
+		 * CompanyDAO cDao = CompanyDAO.getInstance(); cDao.delete(id);
+		 */
+		
 		SubjectDAO sDao = SubjectDAO.getInstance();
-		sDao.delete(id);
+		sDao.delete(sid);
+		
 		resp.sendRedirect("home.do");
 	}
 }

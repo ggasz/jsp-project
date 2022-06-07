@@ -60,24 +60,9 @@
 				<input onclick =" return confirm('정말 삭제 하시겠습니까')"  type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.so"/> 	
 				<input type="submit" class="btn btn-primary pull-right" value="수정"/>											
 			</form>
+		</div>
+	</div>	
 <script>
-	function adddate(){
-		month = document.getElementById("dateid").value;
-		const today = new Date(month);
-		const nextDate = new Date( today.getFullYear(), 
-									today.getMonth()+6 , 
-									today.getDate() -1 );
-		
-		const formatted_date = nextDate.getFullYear() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getDate()
-				
-		/* const addMonth = new Date(nextDate) */
-		insert.s_manage.value=formatted_date;
-	}
-	
-	function enterkeydown(e){
-		if(e.keyCode == 13)
-			return false;
-	}
 	
 </script>
 			

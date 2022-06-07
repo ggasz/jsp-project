@@ -89,6 +89,7 @@ public class ConsequenceDAO {
 			pstmt.setString(14, dto.getCo_porf());
 			pstmt.setString(15, dto.getCo_certificate());
 			pstmt.setInt(16, dto.getM_id());
+			//pstmt.setInt(17, dto.getS_id());
 			
 			return pstmt.executeUpdate();
 			
@@ -128,6 +129,7 @@ public class ConsequenceDAO {
 				tmp.setCo_asse(rs.getString(13));
 				tmp.setCo_porf(rs.getString(14));
 				tmp.setCo_certificate(rs.getString(15));
+				//tmp.setS_id(rs.getInt(16));
 				
 				tmp.setM_id(rs.getInt(16));
 				
@@ -173,6 +175,7 @@ public class ConsequenceDAO {
 				tmp.setCo_porf(rs.getString(14));
 				tmp.setCo_certificate(rs.getString(15));
 				tmp.setM_id(rs.getInt(16));
+				//tmp.setS_id(rs.getInt(17));
 				
 				return tmp;
 				
@@ -193,6 +196,7 @@ public class ConsequenceDAO {
 		query.append("update consequence set ");
 		query.append("co_result = ?, co_attend =?, co_comple = ?, co_employ = ?, co_same = ?, co_insurance = ?, co_option1 = ?, co_option2 = ?, co_option3 = ?, co_option4 = ?, co_option5 = ?, co_option6 = ?, co_asse = ?, co_porf = ?, co_certificate = ? ");
 		query.append("where m_id = ?");
+		//query.append("where s_id = ?");
 		
 		try {
 			pstmt = conn.prepareStatement(query.toString());
@@ -211,6 +215,7 @@ public class ConsequenceDAO {
 			pstmt.setString(13, dto.getCo_asse());
 			pstmt.setString(14, dto.getCo_porf());
 			pstmt.setString(15, dto.getCo_certificate());
+			//pstmt.setInt(16, dto.getS_id());
 			
 			pstmt.setInt(16, dto.getM_id());
 			return pstmt.executeUpdate();
@@ -242,5 +247,11 @@ public class ConsequenceDAO {
 		}
 		return result;
 	}
+	/*
+	 * public int asse(int s_id) { String sql =
+	 * "select sum(co_asse) from consequence where s_id = ?";
+	 * 
+	 * }
+	 */
 	
 }

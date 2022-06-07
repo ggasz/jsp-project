@@ -17,6 +17,7 @@ public class ConsequenceDTO {
 	private String co_porf;			//직종기준
 	private String co_certificate;	//자격증
 	private int m_id;
+	private int s_id;
 	
 	
 	public String getCo_result() {
@@ -115,6 +116,13 @@ public class ConsequenceDTO {
 	public void setM_id(int m_id) {
 		this.m_id = m_id;
 	}
+	public int getS_id() {
+		return s_id;
+	}
+	public void setS_id(int s_id) {
+		this.s_id = s_id;
+	}
+	
 	
 	
 	

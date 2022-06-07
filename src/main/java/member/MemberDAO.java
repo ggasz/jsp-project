@@ -84,7 +84,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			
-			while (rs.next()) {
+			while (rs.next()) {	
 				MemberJoin tmp = new MemberJoin();
 				tmp.setM_id(rs.getInt(1));
 				tmp.setM_name(rs.getString(2));
@@ -248,6 +248,22 @@ public class MemberDAO {
 			conn = ConnectionDB.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, m_id);
+			result = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, null);
+		}
+		return result;
+	}
+	
+	public int delete2(int s_id) {
+		String sql = "delete from member where s_id = ?";
+		
+		try {
+			conn = ConnectionDB.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, s_id);
 			result = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
