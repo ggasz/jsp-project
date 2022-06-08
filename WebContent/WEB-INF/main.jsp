@@ -19,7 +19,7 @@
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
 	%>	
-	<div style="width:auto" class = "container">
+	<div style="width:auto; margin-top : 70px;" class = "container">
 		<div style="width: 1000px; margin: auto;">					
 		<div style="text-align:center;">
 			<form method="post" name="search" action="search.so">

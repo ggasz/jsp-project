@@ -154,23 +154,11 @@ public class SubjectController extends HttpServlet {
 		
 		int sResult = sDao.update(sDto);
 		System.out.print(sResult);
-		resp.sendRedirect("home.do");
+		resp.sendRedirect("select.so?s_id="+id);
 	}
 	
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		int sid = Integer.parseInt(req.getParameter("s_id"));
-		//int id = Integer.parseInt(req.getParameter("m_id"));
-		
-		/*
-		 * MemberDAO mdao = MemberDAO.getInstance(); mdao.delete2(sid);
-		 */
-		
-		/*
-		 * ConsequenceDAO coDao = ConsequenceDAO.getInstance(); coDao.delete(id);
-		 * 
-		 * CompanyDAO cDao = CompanyDAO.getInstance(); cDao.delete(id);
-		 */
-		
+		int sid = Integer.parseInt(req.getParameter("s_id"));		
 		
 		 SubjectDAO sDao = SubjectDAO.getInstance(); 
 		 sDao.delete2(sid);

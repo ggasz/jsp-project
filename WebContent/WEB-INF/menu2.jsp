@@ -16,7 +16,7 @@
 		}
 	%>
 	
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -29,7 +29,9 @@
 		</div>
 		<div class = "collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="home.do">메인</a></li>						
+				<li><a href="home.do">메인</a></li>
+				<li><a href="#">팀별실적</a></li>
+				<li><a href="#">과정전체(진행)</a></li>						
 			</ul>
 			<%
 				if(userID ==null){

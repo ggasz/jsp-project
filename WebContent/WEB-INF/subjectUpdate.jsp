@@ -14,7 +14,7 @@
 	<%@ include file = "menu2.jsp" %>
 
 
-	<div class = "container">
+	<div style = " margin-top : 70px;" class = "container">
 		<div class = "row">
 			<form method = "post" name ="insert" action="update2.so"  onkeydown="return enterkeydown(event)">
 			
@@ -54,11 +54,19 @@
 								<label for="cars">담당교수</label>
 								<input type = "text" class="form-control" name="s_professor" maxlength="20" value =${suSelectOne.s_professor}>
 							</th>
+							<th style = "text-align:center">
+								<label for="cars" >수강정원</label>
+								<input type = "text" class="form-control" name="s_member" maxlength="10" value = "${suSelectOne.s_member}">
+							</th>
+							<th style = "text-align:center">
+								<label for="cars" >목표취업률</label>
+								<input type = "text" class="form-control" name="s_empoyee" maxlength="10"value = "${suSelectOne.s_empoyee}">
+							</th>
 						</tr>
 					</tbody>					
 				</table>
 				<input onclick =" return confirm('정말 삭제 하시겠습니까')"  type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.so"/> 	
-				<input type="submit" class="btn btn-primary pull-right" value="수정"/>											
+				<input type="submit" class="btn btn-primary pull-right" value="수정" style="margin-right : 10px;"/>										
 			</form>
 		</div>
 	</div>	
