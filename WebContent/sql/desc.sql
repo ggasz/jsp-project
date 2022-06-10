@@ -14,4 +14,4 @@ alter table subject add s_member varchar(20);
 alter table subject add s_empoyee varchar(20);
 alter table consequence add s_id varchar(20);
 
-alter table consequence change column s_id s_id int;
+alter table consequence change column co_asse co_asse int;

@@ -14,6 +14,7 @@ public class MemberDTO {
 	private String m_option3;		//대상구분
 	private String m_note;			//비고
 	private int s_id;				//수강번호
+	private int asse;				//테스트중
 	
 	
 	
@@ -96,6 +97,13 @@ public class MemberDTO {
 	public void setS_id(int s_id) {
 		this.s_id = s_id;
 	}
+	public int getAsse() {
+		return asse;
+	}
+	public void setAsse(int asse) {
+		this.asse = asse;
+	}
+	
 	
 	
 	

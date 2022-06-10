@@ -72,6 +72,7 @@
 						<th style="background-color:#eeeeee; text-align:center;">수료고보</th>
 						<th style="background-color:#eeeeee; text-align:center;">자격취득</th>
 					</tr>
+					
 					<tr>
 						<td rowspan='2' valign="middle" align="center">${suSelectOne.s_member}명</td>
 						<td style="background-color:#E5FFCC; text-align:center;"><%=(int)a %>명</td>
@@ -87,7 +88,7 @@
 						<td rowspan='2' style="background-color:#E5FFCC; text-align:center;"><%=(int)re9%>명</td>
 						<td style="background-color:#eeeeee; text-align:center;">목표취업률</td>
 						<td style="background-color:#eeeeee; text-align:center;">평가기준</td>
-						<td style="background-color:#FFCCCC; text-align:center;"><%=aa %>명</td>
+						<td style="background-color:#FFCCCC; text-align:center;">명</td>
 						<td style="background-color:#FFCCCC; text-align:center;">%</td>
 						<td style="background-color:#FFFFFF; text-align:center;"><%=re10 %>명</td>
 						<td style="background-color:#FFFFFF; text-align:center;"><%=re11 %>명</td>
@@ -194,13 +195,14 @@
  						double reDiv6 = 0;		//고보가입 %값
  						double reDiv7 = 0;		//수료고보 %값
  						double cerDiv = 0;		//자격취득 %값
- 						int aa = 0;
+ 						double aa = 0;
  						
  					%>
  					<%
-						MemberDAO memberDao = MemberDAO.getInstance();
+						MemberDAO memberDao = MemberDAO.getInstance(); 
 						List<MemberJoin> list = memberDao.selectList(sId);
-						aa = memberDao.assesum(sId);
+						
+						
 						a = 0;
 						c = 0;
 						re1 = 0;
@@ -217,7 +219,7 @@
 						cer = 0;
 						aDiv = 0;
 						cDiv = 0;
-						
+						aa =0;
 							for(MemberJoin b : list){
 								a =a+1;
 								if(b.getCo_comple().equals("O")){
@@ -260,7 +262,7 @@
 								} 
 								re8 = re7+re6;								
 								re9 = re6+re3+c;
-								 
+								//aa =
 								
 								
 					%>
