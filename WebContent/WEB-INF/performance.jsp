@@ -10,6 +10,7 @@
 <%@page import="company.*" %>
 <%@page import="consequence.*" %>
 <%@page import="java.util.*" %>
+<%@page import="java.text.SimpleDateFormat"%>
 <%-- <%@page import="java.time.LocalDate" %>
 <%@page import="java.time.format.DateTimeFormatter;" %> --%>
 
@@ -24,7 +25,7 @@ th{
 <body>
 
 <!-- 메뉴 -->
-	<%@ include file = "WEB-INF/menu2.jsp" %>
+	<%@ include file = "menu2.jsp" %>
 	
 <div style = " width : 3500px; margin-top : 70px;">
 <div style = "position : sticky; left : 0px;">	
@@ -113,18 +114,25 @@ th{
 <!-- 정보입력  -->
 
 			<%
-				
-				
+				Date date = new Date();
+			
+			
+				SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+				String strdate = simpleDate.format(date);
+		
+				Calendar cal = Calendar.getInstance();
+			
 				SubjectDAO subjectDao = SubjectDAO.getInstance();
 				List<SubjectDTO> list = subjectDao.subjectList2(); 
 				int a = 0;
 					for(SubjectDTO b : list){
-						a=a+1;
-						
-						/* LocalDate now = LocalDate.now();
-						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-						String formatedNow = now.format(formatter);	 */
-						
+					a=a+1;
+					SimpleDateFormat simpleDate2 = new SimpleDateFormat("yyyy-MM-dd");
+					String pss = b.getS_manage();
+					Date date2 = simpleDate2.parse(pss);
+					long dm = (long)date.getTime();  //현재시간
+					long dm2 = (long)date2.getTime(); // 관리종료
+					long dm3 = (dm2-dm)/(1000*60*60*24)+1; // 계산
 			%>
 					<tr>
 						<th style="text-align:center; "><%=a %></th>
@@ -182,27 +190,5 @@ th{
 			</div>
 </div>
 </div>
-<script>
-	function date(){
-		a = document.getElementById("date1").value; //관리일
-		const today = new Date();
-		const day = new Date(a)			//관리종료일
-		const nextDate = new Date (day.getFullYear() - today.getFullYear(),
-									day.getFullYear() - today.getFullYear(),
-									day.getDate() - today.getDate());
-	}
-	
-	function date123(){
-		a = document.getElementById("date1").value; //관리일
-		const today = new Date();
-		const day = new Date(a);
-		
-		const elapsedMSec = day.getTime() - today.getTime();
-		const elapsedDay = elapsedMSec /1000 /60 /60 /24;
-		
-		insert.date2.value=elapsedDay;	
-		document.println(elapsedDay);
-	}
-</script>
 </body>
 </html>

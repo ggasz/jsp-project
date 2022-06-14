@@ -252,14 +252,23 @@ public class MemberDAO {
 		
 		
 		
-		  try { conn = ConnectionDB.getConnection(); pstmt =
-		  conn.prepareStatement(sql); pstmt.setInt(1, s_id); rs = pstmt.executeQuery();
+		  try { conn = ConnectionDB.getConnection(); 
+		  pstmt =conn.prepareStatement(sql);
+		  pstmt.setInt(1, s_id);
+		  rs = pstmt.executeQuery();
 		  
 		  
-		  while(rs.next()) { MemberDTO tmp = new MemberDTO();
-		  tmp.setAsse(rs.getInt(1)); System.out.println("이상무"); return tmp; }
-		  }catch(SQLException e) { e.printStackTrace(); }finally {
-		  close(conn,pstmt,rs); } return null;
+		  while(rs.next()) {
+		  MemberDTO tmp = new MemberDTO();
+		  tmp.setAsse(rs.getInt(1));
+		  System.out.println("이상무"); 
+		  return tmp; 
+		  }
+		  }catch(SQLException e) { 
+			  e.printStackTrace();
+			  }finally {
+		  close(conn,pstmt,rs); 
+		  } return null;
 		 
 		
 		

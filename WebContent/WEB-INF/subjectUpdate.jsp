@@ -29,30 +29,30 @@
 					</thead>
 					</tbody>
 						<tr>
-						<input type = "text" class="form-control" name="s_id" maxlength="10" value = ${suSelectOne.s_id}>
+						<input type = "text" class="form-control" name="s_id" maxlength="10" value = "${suSelectOne.s_id}">
 							<th style = "text-align:center">
 								<label for="cars" >과정명</label>
-								<input type = "text" class="form-control" name="s_name" value = ${suSelectOne.s_name}>
+								<input type = "text" class="form-control" name="s_name" value = "${suSelectOne.s_name}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">과목코드</label>
-								<input type = "text" class="form-control"name="s_code" value = ${suSelectOne.s_code} >
+								<input type = "text" class="form-control"name="s_code" value = "${suSelectOne.s_code}" >
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">과정시작일</label>
-								<input type = "date" class="form-control" name="s_start" maxlength="20" value = "1900-01-01" min="0000-00-00" max="3000-12-31" value =${suSelectOne.s_start}>
+								<input type = "date" class="form-control" name="s_start" maxlength="20" value = "1900-01-01" min="0000-00-00" max="3000-12-31" value ="${suSelectOne.s_start}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">과정종료일</label>
-								<input type = "date" class="form-control" id = "dateid" name="s_end" maxlength="20" value = "1900-01-01" min="0000-00-00" max="3000-12-31" value =${suSelectOne.s_end} onchange = adddate();>
+								<input type = "date" class="form-control" id = "dateid" name="s_end" maxlength="20" value = "1900-01-01" min="0000-00-00" max="3000-12-31" value ="${suSelectOne.s_end}" onchange = adddate();>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">추후관리</label>
-								<input type = "text" class="form-control" name="s_manage" maxlength="20" readonly value =${suSelectOne.s_manage}>
+								<input type = "text" class="form-control" name="s_manage" maxlength="20" readonly value ="${suSelectOne.s_manage}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">담당교수</label>
-								<input type = "text" class="form-control" name="s_professor" maxlength="20" value =${suSelectOne.s_professor}>
+								<input type = "text" class="form-control" name="s_professor" maxlength="20" value ="${suSelectOne.s_professor}">
 							</th>
 							<th style = "text-align:center">
 								<label for="cars" >수강정원</label>
@@ -78,32 +78,42 @@
 								<th>
 									<th style = "text-align:center">
 									<label for="cars" >회차</label>
-									<input type = "text" class="form-control"placeholder="회차" name="s_session" maxlength="50"  value = ${suSelectOne.s_session}>
+									<input type = "text" class="form-control"placeholder="회차" name="s_session" maxlength="50" value = "${suSelectOne.s_session}">
 								</th>
 								<th>
 									<th style = "text-align:center">
 									<label for="cars" >직종</label>
-									<input type = "text" class="form-control"placeholder="직종" name="s_profession" maxlength="50"  value = ${suSelectOne.s_profession}>
+									<input type = "text" class="form-control"placeholder="직종" name="s_profession" maxlength="50" value = "${suSelectOne.s_profession}">
 								</th>
 								<th>
 									<th style = "text-align:center">
 									<label for="cars" >소분류</label>
-									<input type = "text" class="form-control"placeholder="소분류" name="s_subject" maxlength="50"  value = ${suSelectOne.s_subject}>
+									<input type = "text" class="form-control"placeholder="소분류" name="s_subject" maxlength="50" value = "${suSelectOne.s_subject}">
+								</th>
+								<th>
+									<th style = "text-align:center">
+									<label for="cars" >소분류코드</label>
+									<input type = "text" class="form-control"placeholder="소분류코드" name="s_code2" maxlength="50" value = "${suSelectOne.s_code2}">
+								</th>
+								<th>
+									<th style = "text-align:center">
+									<label for="cars" >상태</label>
+									<input type = "text" class="form-control"placeholder="상태" name="s_condition" maxlength="50" value = "${suSelectOne.s_condition}">
 								</th>
 								<th>
 									<th style = "text-align:center">
 									<label for="cars" >소속</label>
-									<input type = "text" class="form-control"placeholder="소속" name="s_affiliation" maxlength="50"  value = ${suSelectOne.s_affiliation}>
+									<input type = "text" class="form-control"placeholder="소속" name="s_affiliation" maxlength="50" value = "${suSelectOne.s_affiliation}">
 								</th>
 								<th>
 									<th style = "text-align:center">
 									<label for="cars" >과정명2</label>
-									<input type = "text" class="form-control"placeholder="과정명" name="s_name2" maxlength="50"  value = ${suSelectOne.s_name2}>
+									<input type = "text" class="form-control"placeholder="과정명" name="s_name2" maxlength="50" value = "${suSelectOne.s_name2}">
 								</th>
 								<th>
 									<th style = "text-align:center">
 									<label for="cars" >취성패조회</label>
-									<input type = "text" class="form-control"placeholder="취성패조회" name="s_option" maxlength="50"  value = ${suSelectOne.s_option}>
+									<input type = "text" class="form-control"placeholder="취성패조회" name="s_option" maxlength="50" value = "${suSelectOne.s_option}">
 								</th>
 							</tr>
 					</tbody>

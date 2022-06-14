@@ -51,7 +51,7 @@
 								</th>
 								<th style = "text-align:center">
 									<label for="cars" >추후관리</label>
-									<input type = "text" class="form-control"placeholder="추후관리" name="s_manage" maxlength="10" readonly>
+									<input type = "text" class="form-control"placeholder="추후관리" id="dateid2" name="s_manage" maxlength="10" readonly >
 								</th>
 								<th style = "text-align:center">
 									<label for="cars" >담당교수</label>
@@ -140,6 +140,15 @@
 				
 		/* const addMonth = new Date(nextDate) */
 		insert.s_manage.value=formatted_date;
+	}
+	function adddate2(){
+		a = document.getElementById("dateid2").value; //관리일
+		const today = new Date();
+		const day = new Date(a);
+		
+		const elapsedMSec = day.getTime() - today.getTime();
+		const elapsedDay = elapsedMSec /1000 /60 /60 /24;
+		insert.s_professor.value=elapsedDay
 	}
 	
 	function enterkeydown(e){

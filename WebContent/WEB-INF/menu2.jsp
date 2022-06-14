@@ -31,7 +31,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="home.do">메인</a></li>
 				<li><a href="#">팀별실적</a></li>
-				<li><a href="#">과정전체(진행)</a></li>						
+				<li><a href="performance.do">과정전체(진행)</a></li>						
 			</ul>
 			<%
 				if(userID ==null){

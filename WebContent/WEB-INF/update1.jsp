@@ -342,7 +342,7 @@ function Attendance1(){  // 출석률로 결과 및 이수여부 확인
 	if(att >= 80){
 		insert.co_comple.value = "O";
 	} else if(result == "중도탈락"){
-		insert.co_comple.value = "1";
+		insert.co_comple.value = "";
 	} else if(att >= 70 && att <= 79){
 		insert.co_comple.value = "이수";
 	} else {

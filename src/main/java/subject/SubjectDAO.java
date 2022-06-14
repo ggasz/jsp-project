@@ -201,7 +201,7 @@ public class SubjectDAO {
 		StringBuffer query = new StringBuffer();
 		query.append("update subject set ");
 		query.append(
-				"s_name = ?, s_code = ?, s_start = ?, s_end = ?, s_manage = ?, s_professor = ? , s_member = ?, s_empoyee =? s_session=?, s_profession=?, s_subject=?, s_affiliation=?, s_name=?, s_option=?");
+				"s_name = ?, s_code = ?, s_start = ?, s_end = ?, s_manage = ?, s_professor = ? , s_member = ?, s_empoyee =?, s_session=?, s_profession=?, s_subject=?, s_affiliation=?, s_name2=?, s_option=?, s_code2=?, s_condition=? ");
 		query.append("where s_id = ?");
 
 		try {
@@ -260,6 +260,8 @@ public class SubjectDAO {
 				sb.setS_affiliation(rs.getString(13));
 				sb.setS_name2(rs.getString(14));
 				sb.setS_option(rs.getString(15));
+				sb.setS_code2(rs.getString(16));
+				sb.setS_condition(rs.getString(17));
 
 				return sb;
 			}

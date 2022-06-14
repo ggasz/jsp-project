@@ -143,7 +143,7 @@
 								<input type = "text" class="form-control" id = "co_option1Id" name="co_option1" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
-								<label for="cars">직종가종치</label>
+								<label for="cars">일반취업률</label>
 								<input type = "text" class="form-control" id = "co_option2Id" name="co_option2" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
@@ -151,7 +151,7 @@
 								<input type = "text" class="form-control" id = "co_option3Id" name="co_option3" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
-								<label for="cars">직종가중치</label>
+								<label for="cars">일반취업률</label>
 								<input type = "text" class="form-control" id = "co_option4Id" name="co_option4" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
@@ -159,7 +159,7 @@
 								<input type = "text" class="form-control" value ="1" id = "co_option5Id" name="co_option5" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
-								<label for="cars">직종가중치</label>
+								<label for="cars">일반취업률</label>
 								<input type = "text" class="form-control" value ="1" id = "co_option6Id" name="co_option6" maxlength="20" readonly>
 							</th>
 							<th style = "text-align:center">
@@ -312,7 +312,7 @@
 		if(att >= 80){
 			insert.co_comple.value = "O";
 		} else if(result == "중도탈락"){
-			insert.co_comple.value = "1";
+			insert.co_comple.value = "";
 		} else if(att >= 70 && att <= 79){
 			insert.co_comple.value = "이수";
 		} else {
