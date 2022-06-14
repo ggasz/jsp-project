@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.io.PrintWriter" %>
+<%@ page import = "note.*" %>
+<%@ page import = "java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head> 
@@ -74,10 +76,6 @@
 							<th style = "text-align:center">
 								<label for="cars">대상구분</label>
 								<input type = "text" class="form-control" name="m_option3" maxlength="20" value ="${selectOne.m_option3}">
-							</th>
-							<th style = "text-align:center">
-								<label for="cars">비고</label>
-								<input type = "text" class="form-control" name="m_note" maxlength="20" value ="${selectOne.m_note}">
 							</th>
 							
 						</tr>
@@ -242,9 +240,53 @@
 						</tr>
 					</tbody>					
 				</table>
+				<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
+					<thead>
+						<tr>
+							<th colspan="18" style="backgroud-color:#eeeeee; text-align:center;">비고</th>						
+						</tr>
+					</thead>
+					</tbody>
+						<tr>
+							<th style = "text-align:center">
+								<input type = "text" class="form-control" name="n_note" value ="">
+							</th>
+						</tr>
+					</tbody>					
+				</table>
 				<input onclick = "return confirm('정말 삭제 하시겠습니까?')" type="submit" class="btn btn-primary pull-right" value="삭제" formaction="delete.do"/>
 				<input type="button" class="btn btn-primary pull-right" value="수정" style="margin-right : 10px;" onclick = "check()">					
-			</form>			
+			</form>
+			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd; margin-top : 75px;">
+				<thead>
+					<tr>
+						<th style="background-color:#eeeeee; text-align:center;">번호</th>
+						<th style="background-color:#eeeeee; text-align:center;">날짜</th>
+						<th style="background-color:#eeeeee; text-align:center;">비고</th>
+					</tr>	
+				</thead>
+				
+				<%
+					int mId = (int)request.getAttribute("mId");
+					NoteDAO nDao = NoteDAO.getInstance();
+					List<NoteDTO> list = nDao.selectList(mId);
+					
+					int a = 0;
+					for(NoteDTO nd : list){
+						a = a+1;
+					
+				%>
+				<tbody>
+					<tr>
+						<td><%=a %></td>
+						<td><%=nd.getN_date() %></td>
+						<td><%=nd.getN_note() %></td>
+					</tr>
+				</tbody>
+				<%
+					}
+				%>
+			</table>					
 		</div>
 	</div>
      

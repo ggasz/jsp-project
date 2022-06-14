@@ -66,3 +66,14 @@ create table subject(
 	
 	primary key(s_id)
 );
+
+create table note(
+	m_id int,
+	n_id int,
+	n_note varchar(200),
+	n_date date not null default(current_date),
+	
+	primary key(m_id, n_id)
+);
+
+
