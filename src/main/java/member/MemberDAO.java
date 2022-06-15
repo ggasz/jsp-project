@@ -1,5 +1,6 @@
 package member;
 
+import java.io.Console;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,23 +12,21 @@ import db.*;
 import member.*;
 
 public class MemberDAO {
-	
+
 	private static MemberDAO mDao = new MemberDAO();
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private int result = 0;
-	
+
 	private MemberDAO() {
 		super();
 	}
-	
+
 	public static MemberDAO getInstance() {
 		return mDao;
 	}
-	
-	
-	
+
 	public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
 
 		if (rs != null) {
@@ -52,12 +51,12 @@ public class MemberDAO {
 			}
 		}
 	}
-	
+
 	public int nextval() {
 		conn = ConnectionDB.getConnection();
 		StringBuffer query = new StringBuffer();
 		query.append("SELECT MAX(m_id) ").append("FROM member");
-		
+
 		try {
 			pstmt = conn.prepareStatement(query.toString());
 			rs = pstmt.executeQuery();
@@ -71,19 +70,18 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	
-	public List<MemberJoin> selectList(int s_id){
+
+	public List<MemberJoin> selectList(int s_id) {
 
 		List<MemberJoin> list = new ArrayList<>();
-		
+
 		try {
 			conn = ConnectionDB.getConnection();
 			String sql = "select * from member join company on member.m_id = company.m_id join consequence on member.m_id = consequence.m_id where s_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, s_id);
 			rs = pstmt.executeQuery();
-			
-			
+
 			while (rs.next()) {
 				MemberJoin tmp = new MemberJoin();
 				tmp.setM_id(rs.getInt(1));
@@ -94,9 +92,9 @@ public class MemberDAO {
 				tmp.setM_age1(rs.getInt(6));
 				tmp.setM_age2(rs.getInt(7));
 				tmp.setM_sex(rs.getString(8));
-				tmp.setM_option1(rs.getString(9));				
+				tmp.setM_option1(rs.getString(9));
 				tmp.setM_option2(rs.getString(10));
-			
+
 				tmp.setC_start(rs.getString(13));
 				tmp.setC_maintain(rs.getString(14));
 				tmp.setC_end(rs.getString(15));
@@ -105,7 +103,7 @@ public class MemberDAO {
 				tmp.setC_number(rs.getString(18));
 				tmp.setC_manager(rs.getString(19));
 				tmp.setC_except(rs.getString(20));
-				
+
 				tmp.setCo_result(rs.getString(22));
 				tmp.setCo_attend(rs.getString(23));
 				tmp.setCo_comple(rs.getString(24));
@@ -121,29 +119,26 @@ public class MemberDAO {
 				tmp.setCo_asse(rs.getString(34));
 				tmp.setCo_porf(rs.getString(35));
 				tmp.setCo_certificate(rs.getString(36));
-				
+
 				list.add(tmp);
-				
+
 			}
 
-		} catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(conn, pstmt, rs);
 		}
 		return list;
 	}
-	
-	
-	
-	
+
 	public int insert(MemberDTO dto) {
-		 
+
 		conn = ConnectionDB.getConnection();
 		StringBuffer query = new StringBuffer();
 		query.append("insert into Member ");
 		query.append("values (?,?,?,?,?,?,?,?,?,?,?,?)");
-		 
+
 		try {
 			pstmt = conn.prepareStatement(query.toString());
 			pstmt.setInt(1, dto.getM_id());
@@ -158,30 +153,27 @@ public class MemberDAO {
 			pstmt.setString(10, dto.getM_option2());
 			pstmt.setString(11, dto.getM_option3());
 			pstmt.setInt(12, dto.getS_id());
-		
-		
+
 			return pstmt.executeUpdate();
-			 
-			 
-			 
-		 } catch(SQLException e) {
-			 e.printStackTrace();
-		 } finally {
-			 close(conn, pstmt, null);
-		 }
-		 return -1;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, null);
+		}
+		return -1;
 	}
-	 
+
 	public MemberDTO selectOne(int m_id) {
 		String sql = "Select * from member where m_id = ?";
-		
+
 		try {
 			conn = ConnectionDB.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, m_id);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()){
+
+			while (rs.next()) {
 				MemberDTO tmp = new MemberDTO();
 				tmp.setM_id(rs.getInt(1));
 				tmp.setM_name(rs.getString(2));
@@ -189,31 +181,33 @@ public class MemberDAO {
 				tmp.setM_number(rs.getString(4));
 				tmp.setM_area(rs.getString(5));
 				tmp.setM_age1(rs.getInt(6));
-				tmp.setM_age2(rs.getInt(7));	
+				tmp.setM_age2(rs.getInt(7));
 				tmp.setM_sex(rs.getString(8));
-				tmp.setM_option1(rs.getString(9));		
+				tmp.setM_option1(rs.getString(9));
 				tmp.setM_option2(rs.getString(10));
 				tmp.setM_option3(rs.getString(11));
 				tmp.setS_id(rs.getInt(12));
-					
+
 				return tmp;
-			 }
-		}catch(Exception e) {
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			close(conn,pstmt,rs);
+		} finally {
+			close(conn, pstmt, rs);
 		}
-		 
+
 		return null;
 	}
-	public int update (MemberDTO dto) {
-		
+
+	public int update(MemberDTO dto) {
+
 		conn = ConnectionDB.getConnection();
 		StringBuffer query = new StringBuffer();
 		query.append("update member set ");
-		query.append("m_name = ?, m_birth = ?, m_number = ?, m_area = ?, m_age1 = ?, m_age2 = ?, m_sex = ?, m_option1 = ?, m_option2 = ?, m_option3 = ?, s_id = ? ");
+		query.append(
+				"m_name = ?, m_birth = ?, m_number = ?, m_area = ?, m_age1 = ?, m_age2 = ?, m_sex = ?, m_option1 = ?, m_option2 = ?, m_option3 = ?, s_id = ? ");
 		query.append("where m_id = ?");
-		
+
 		try {
 			pstmt = conn.prepareStatement(query.toString());
 			pstmt.setString(1, dto.getM_name());
@@ -227,67 +221,61 @@ public class MemberDAO {
 			pstmt.setString(9, dto.getM_option2());
 			pstmt.setString(10, dto.getM_option3());
 			pstmt.setInt(11, dto.getS_id());
-			
+
 			pstmt.setInt(12, dto.getM_id());
 			return pstmt.executeUpdate();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			close(conn,pstmt,null);
+		} finally {
+			close(conn, pstmt, null);
 		}
 		return -1;
 	}
-	
-	public MemberDTO assesum (int s_id){
-		String sql = "select sum(co_asse) from member join company on member.m_id = company.m_id join consequence on member.m_id = consequence.m_id where s_id=?";
-		
-		
-		/*
-		 * conn = ConnectionDB.getConnection(); pstmt = conn.prepareStatement(sql);
-		 * pstmt.setInt(1, s_id); rs = pstmt.executeQuery(); result = rs.getInt(1);
-		 * 
-		 * 
-		 * return result;
-		 */	 
-		
-		
-		
-		  try { conn = ConnectionDB.getConnection(); 
-		  pstmt =conn.prepareStatement(sql);
-		  pstmt.setInt(1, s_id);
-		  rs = pstmt.executeQuery();
-		  
-		  
-		  while(rs.next()) {
-		  MemberDTO tmp = new MemberDTO();
-		  tmp.setAsse(rs.getInt(1));
-		  System.out.println("이상무"); 
-		  return tmp; 
-		  }
-		  }catch(SQLException e) { 
-			  e.printStackTrace();
-			  }finally {
-		  close(conn,pstmt,rs); 
-		  } return null;
-		 
-		
-		
-	}
-	
+
+	/*
+	 * public MemberDTO assesum (int s_id){ String sql =
+	 * "select sum(co_asse) from member join company on member.m_id = company.m_id join consequence on member.m_id = consequence.m_id where s_id=?"
+	 * ;
+	 * 
+	 * 
+	 * 
+	 * conn = ConnectionDB.getConnection(); pstmt = conn.prepareStatement(sql);
+	 * pstmt.setInt(1, s_id); rs = pstmt.executeQuery(); result = rs.getInt(1);
+	 * 
+	 * 
+	 * return result;
+	 * 
+	 * 
+	 * 
+	 * 
+	 * try { conn = ConnectionDB.getConnection(); pstmt =conn.prepareStatement(sql);
+	 * pstmt.setInt(1, s_id); rs = pstmt.executeQuery();
+	 * 
+	 * 
+	 * while(rs.next()) { MemberDTO tmp = new MemberDTO();
+	 * tmp.setAsse(rs.getInt(1)); System.out.println("이상무"); return tmp; }
+	 * }catch(SQLException e) { e.printStackTrace(); }finally {
+	 * close(conn,pstmt,rs); } return null;
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
+
 	public int delete(int m_id) {
 		String sql = "delete from member where m_id = ?";
-		
+
 		try {
 			conn = ConnectionDB.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, m_id);
 			result = pstmt.executeUpdate();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(conn, pstmt, null);
 		}
 		return result;
-	}	
+	}
 
 }
