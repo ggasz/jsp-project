@@ -12,29 +12,32 @@
 <%@page import="company.*" %>
 <%@page import="consequence.*" %>
 <%@page import="java.util.*" %>
-<%-- <%@page import="java.time.LocalDate" %>
-<%@page import="java.time.format.DateTimeFormatter;" %> --%>
+<title>Insert title here</title>
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<title>전체(진행)</title>
-<style>
-th{
-	border: 1px solid;
-}
-</style>
+ <%@ include file = "WEB-INF/menu2.jsp"%>
+ 
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css"
+ href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+
+
+<script>
+    $(function(){
+        $("#tablesort").dataTable({
+        	 searching: false,
+        	 info: false
+        });
+       
+    });
+</script>
 </head>
+ 
 <body>
-
-<!-- 메뉴 -->
-	<%@ include file = "menu2.jsp" %>
-	
-<div style = " width : 3500px; margin-top : 70px;">
-<div style = "position : sticky; left : 0px;">	
-	
-<!-- 테이블 시작  -->
-
-			<div style ="border-top : 1px solid; font-size: 11px;" name="insert">
-				<table class="table table-striped" style="text-align:center;">
+   <div style ="border-top : 1px solid; font-size: 11px; margin-top: 50px; width:4000px;" name="insert" >
+				<table id="tablesort" class="table table-striped" style="text-align:center; ">
+				<thead>
 					<tr>
 						<th colspan='8' style="/* position : sticky; left : 0; */ background-color:#DCE6F1; text-align:center;">구분</th>
 						<th colspan='4' style="/* position : sticky; left : 425.5px; */ background-color:#DCE6F1; text-align:center;">훈련기간</th>
@@ -60,8 +63,6 @@ th{
 						<th style="background-color:#DCE6F1; text-align:center;">과정구분</th>
 					</tr>
 					
-<!-- 2번째  -->
-		
 					<tr>
 						<th style="background-color:#DCE6F1; text-align:center; width:55px ">순번</th>
 						<th style="background-color:#DCE6F1; text-align:center; ">소속
@@ -116,9 +117,11 @@ th{
 						<th style="background-color:#DCE6F1; text-align:center;">수료과정</th>
 						<th style="background-color:#DCE6F1; text-align:center;">종료과정</th>
 					</tr>
+				</thead>
+				<tbody>
 					
-<!-- 정보입력  -->
-			<%!
+					
+				<%!
 				DecimalFormat format = new DecimalFormat(".0");
 				double aLb = 0;		//모집인원 -> 인원
 				double aLbDiv = 0;	//모집인원 -> 모집률
@@ -328,11 +331,9 @@ th{
 					</tr>
 				<%
 					}
-				%>			
-				</table>
-			</div>
-</div>
-</div>
-
+				%>		
+				</tbody>	
+			</table>
+	</div>
 </body>
 </html>

@@ -136,7 +136,7 @@
 						cer = 0;
 						aDiv = 0;
 						cDiv = 0;
-						tmp = 1;
+						
 	
 							for(MemberJoin b : list){
 								a =a+1;
@@ -210,7 +210,7 @@
 						<td rowspan='2' style="background-color:#E5FFCC; text-align:center;"><%=(int)re9%>명</td>
 						<td style="background-color:#eeeeee; text-align:center;">목표취업률</td>
 						<td style="background-color:#eeeeee; text-align:center;">평가기준</td>
-						<td style="background-color:#FFCCCC; text-align:center;"><%=tmp %>명</td>
+						<td style="background-color:#FFCCCC; text-align:center;">명</td>
 						<td style="background-color:#FFCCCC; text-align:center;">%</td>
 						<td style="background-color:#FFFFFF; text-align:center;"><%=re10 %>명</td>
 						<td style="background-color:#FFFFFF; text-align:center;"><%=re11 %>명</td>
