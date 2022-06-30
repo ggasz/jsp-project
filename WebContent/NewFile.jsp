@@ -35,12 +35,12 @@
 </head>
  
 <body>
-   <div style ="border-top : 1px solid; font-size: 11px; margin-top: 50px; width:4000px;" name="insert" >
+   <div style =" border-top : 1px solid; font-size: 11px; margin-top: 50px; width:4000px;" name="insert" >
 				<table id="tablesort" class="table table-striped" style="text-align:center; ">
 				<thead>
 					<tr>
-						<th colspan='8' style="/* position : sticky; left : 0; */ background-color:#DCE6F1; text-align:center;">구분</th>
-						<th colspan='4' style="/* position : sticky; left : 425.5px; */ background-color:#DCE6F1; text-align:center;">훈련기간</th>
+						<th colspan='8' style=" /* position : sticky; left : 0; */  background-color:#DCE6F1; text-align:center;">구분</th>
+						<th colspan='4' style=" /* position : sticky; left : 425.5px; */  background-color:#DCE6F1; text-align:center;">훈련기간</th>
 						<th style="background-color:#DCE6F1; text-align:center;">정원</th>
 						<th colspan='2' style="background-color:#DCE6F1; text-align:center;">모집인원</th>
 						<th colspan='2' style="background-color:#DCE6F1; text-align:center;">수료인원</th>

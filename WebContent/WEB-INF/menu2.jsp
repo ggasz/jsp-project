@@ -31,7 +31,9 @@
 			<ul class="nav navbar-nav">
 				<li><a href="home.do">메인</a></li>
 				<li><a href="#">팀별실적</a></li>
-				<li><a href="performance.do">과정전체(진행)</a></li>						
+				<li><a href="performance.do">과정전체(진행)</a></li>	
+				<li><a href="NewFile.jsp">과정전체(작업중)</a>
+				<li><a href="NewFile2.jsp">팀별성적(작업중)</a>					
 			</ul>
 			<%
 				if(userID ==null){

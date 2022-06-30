@@ -232,35 +232,30 @@ public class MemberDAO {
 		return -1;
 	}
 
-	/*
-	 * public MemberDTO assesum (int s_id){ String sql =
-	 * "select sum(co_asse) from member join company on member.m_id = company.m_id join consequence on member.m_id = consequence.m_id where s_id=?"
-	 * ;
-	 * 
-	 * 
-	 * 
-	 * conn = ConnectionDB.getConnection(); pstmt = conn.prepareStatement(sql);
-	 * pstmt.setInt(1, s_id); rs = pstmt.executeQuery(); result = rs.getInt(1);
-	 * 
-	 * 
-	 * return result;
-	 * 
-	 * 
-	 * 
-	 * 
-	 * try { conn = ConnectionDB.getConnection(); pstmt =conn.prepareStatement(sql);
-	 * pstmt.setInt(1, s_id); rs = pstmt.executeQuery();
-	 * 
-	 * 
-	 * while(rs.next()) { MemberDTO tmp = new MemberDTO();
-	 * tmp.setAsse(rs.getInt(1)); System.out.println("ÀÌ»ó¹«"); return tmp; }
-	 * }catch(SQLException e) { e.printStackTrace(); }finally {
-	 * close(conn,pstmt,rs); } return null;
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+	public MemberDTO selectAsse(int s_id){
+		String sql = "select sum(co_asse) from member join company on member.m_id = company.m_id join consequence on member.m_id = consequence.m_id where s_id = ?";
+		
+		try {
+			conn = ConnectionDB.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, s_id);
+			rs = pstmt.executeQuery();
+			
+			
+			while (rs.next()) {
+				MemberDTO tmp = new MemberDTO();
+				tmp.setAsse(rs.getString(1));
+				
+				return tmp;
+			}
+
+		} catch(SQLException e){
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return null;
+	}
 
 	public int delete(int m_id) {
 		String sql = "delete from member where m_id = ?";

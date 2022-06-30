@@ -12,8 +12,9 @@ public class MemberDTO {
 	private String m_option1;		//유형
 	private String m_option2;		//구분
 	private String m_option3;		//대상구분	
+	private String asse;
 	private int s_id;				//수강번호
-	private int asse;				//테스트중
+	
 	
 	
 	
@@ -83,19 +84,21 @@ public class MemberDTO {
 	}
 	public void setM_option3(String m_option3) {
 		this.m_option3 = m_option3;
-	}	
+	}
+	
+	public String getAsse() {
+		return asse;
+	}
+	public void setAsse(String asse) {
+		this.asse = asse;
+	}
 	public int getS_id() {
 		return s_id;
 	}
 	public void setS_id(int s_id) {
 		this.s_id = s_id;
 	}
-	public int getAsse() {
-		return asse;
-	}
-	public void setAsse(int asse) {
-		this.asse = asse;
-	}
+
 	
 	
 	

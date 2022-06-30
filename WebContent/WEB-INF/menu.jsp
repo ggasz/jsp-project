@@ -24,7 +24,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="home.do">메인</a></li>	
 				<li><a href="#">팀별실적</a></li>
-				<li><a href="performance.do">훈련실적현황</a></li>			
+				<li><a href="performance.do">훈련실적현황</a></li>		
+				<li><a href="NewFile.jsp">훈련실적현황(진행중)</a>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">

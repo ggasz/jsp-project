@@ -78,10 +78,10 @@
 								<label for="cars">대상구분</label>
 								<input type = "text" class="form-control"placeholder="대상구분" name="m_option3" maxlength="20">
 							</th>
-							<th style = "text-align:center">
+							<!-- <th style = "text-align:center">
 								<label for="cars">비고</label>
 								<input type = "text" class="form-control"placeholder="비고" name="m_note" maxlength="20">
-							</th>
+							</th> -->
 							
 						</tr>
 					</tbody>					
@@ -330,7 +330,7 @@
 			insert.co_option1.value = 1;
 			insert.co_option2.value = 1;
 		} else if (item3 == "X"){
-			insert.co_option1.value = 0.5;
+			insert.co_option1.value = 0.5; 
 			insert.co_option2.value = 1;
 		} else {
 			insert.co_option1.value = 0;

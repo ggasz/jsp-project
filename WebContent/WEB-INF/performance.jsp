@@ -12,32 +12,47 @@
 <%@page import="company.*" %>
 <%@page import="consequence.*" %>
 <%@page import="java.util.*" %>
-<%-- <%@page import="java.time.LocalDate" %>
-<%@page import="java.time.format.DateTimeFormatter;" %> --%>
 
-<link rel="stylesheet" href="css/bootstrap.css">
 <title>전체(진행)</title>
-<style>
-th{
-	border: 1px solid;
-}
-</style>
-</head>
-<body>
-
 <!-- 메뉴 -->
 	<%@ include file = "menu2.jsp" %>
 	
-<div style = " width : 3500px; margin-top : 70px;">
-<div style = "position : sticky; left : 0px;">	
 	
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css"
+ href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+
+
+<script>
+    $(function(){
+        $("#tablesort").dataTable({
+        	 searching: false,
+        	 info: false,
+             scrollY:        "700px",
+             scrollX:        true,
+             scrollCollapse: true,
+             fixedColumns:   {
+                 left: 2
+             }
+        });
+       
+    });
+</script>
+
+
+</head>
+<body>
+
 <!-- 테이블 시작  -->
 
-			<div style ="border-top : 1px solid; font-size: 11px;" name="insert">
-				<table class="table table-striped" style="text-align:center;">
+   <div style ="border-top : 1px solid; font-size : 11px; margin-top : 70px; " name="insert" >
+				<table id="tablesort" class="table table-striped" style="text-align:center; white-space: nowrap; width : 100%; ">
+				<thead>
 					<tr>
-						<th colspan='8' style="/* position : sticky; left : 0; */ background-color:#DCE6F1; text-align:center;">구분</th>
-						<th colspan='4' style="/* position : sticky; left : 425.5px; */ background-color:#DCE6F1; text-align:center;">훈련기간</th>
+						<th colspan='8' style="background-color:#DCE6F1; text-align:center;">구분</th>
+						<th colspan='4' style="background-color:#DCE6F1; text-align:center;">훈련기간</th>
 						<th style="background-color:#DCE6F1; text-align:center;">정원</th>
 						<th colspan='2' style="background-color:#DCE6F1; text-align:center;">모집인원</th>
 						<th colspan='2' style="background-color:#DCE6F1; text-align:center;">수료인원</th>
@@ -60,16 +75,9 @@ th{
 						<th style="background-color:#DCE6F1; text-align:center;">과정구분</th>
 					</tr>
 					
-<!-- 2번째  -->
-		
 					<tr>
 						<th style="background-color:#DCE6F1; text-align:center; width:55px ">순번</th>
 						<th style="background-color:#DCE6F1; text-align:center; ">소속
-						<!-- <select style="background-color:#DCE6F1; ">
-						<option value="빈칸" selected></option>
-						<option value= "오름차순">오름차순</option>
-						<option value="내림차순">내림차순</option>
-						</select> --></th>
 						<th style="background-color:#DCE6F1; text-align:center;">과정명</th>
 						<th style="background-color:#DCE6F1; text-align:center;">회차</th>
 						<th style="background-color:#DCE6F1; text-align:center;">담임</th>
@@ -116,8 +124,11 @@ th{
 						<th style="background-color:#DCE6F1; text-align:center;">수료과정</th>
 						<th style="background-color:#DCE6F1; text-align:center;">종료과정</th>
 					</tr>
-					
-<!-- 정보입력  -->
+				</thead>
+				<tbody>
+				
+<!-- 정보계산 -->
+				
 			<%!
 				DecimalFormat format = new DecimalFormat(".0");
 				double aLb = 0;		//모집인원 -> 인원
@@ -144,10 +155,13 @@ th{
 				double reDiv5 = 0;	//고보가입률
 				double re14 = 0;	//수료고보가입
 				double reDiv6 = 0;	//수료고보가입률
+				double re15 = 0;	//전담인원
+				double reDiv7 = 0;	//전담률
 				double cer = 0;		//자격취득
 				double cerDiv = 0;	//자격증취득률
-				
-			
+				double reDiv9 = 0;		//가중치취업률 %값
+				double doubleAsse =0; //sum(asse)값
+				List<SubjectDTO> list = new ArrayList<>();
 			%>
 			<%
 				Date date = new Date();
@@ -159,7 +173,7 @@ th{
 				Calendar cal = Calendar.getInstance();
 				
 				SubjectDAO subjectDao = SubjectDAO.getInstance();
-				List<SubjectDTO> list = subjectDao.subjectList2(); 
+				List<SubjectDTO> list = subjectDao.subjectList2();
 				int a = 0;
 					for(SubjectDTO b : list){
 						a=a+1;
@@ -174,6 +188,14 @@ th{
 						int member2 = Integer.parseInt(member);
 						MemberDAO memberDao = MemberDAO.getInstance();
 						List<MemberJoin> list2 = memberDao.selectList(b.getS_id());
+						
+						String asse = memberDao.selectAsse(b.getS_id()).getAsse();
+						if(asse == null){	//이거 없으면 값 없을때 null로 보임
+							asse = "0";
+						}
+						if(asse != null){	// 이거 없으면 값 없을때 오류남
+							doubleAsse = Double.parseDouble(asse);
+						}
 						aLb = 0;	//모집인원 -> 인원
 						co = 0;		//수료인원
 						re1 = 0;	//중도탈락
@@ -191,6 +213,7 @@ th{
 						re12 = 0;	//취업인원
 						re13 = 0;	//고보가입
 						re14 = 0;	//수료고보가입
+						re15 = 0;	//전담인원
 						cer = 0;
 						for (MemberJoin Lb : list2){
 							aLb = aLb +1;	//모집인원 -> 인원
@@ -240,6 +263,9 @@ th{
 								Lb.getCo_result().equals("이수취업") && Lb.getCo_insurance().equals("예정")){
 								re14 = re14+1;
 							} 
+							if(!Lb.getC_manager().equals("")){
+								re15 = re15+1;
+							}
 						}
 						
 						aLbDiv = (aLb/member2)*100;
@@ -255,12 +281,13 @@ th{
 						cerDiv = (cer/a)*100;
 						reDiv5 = (re13/(re2+re3+re4+re5))*100;
 						reDiv6 = (re14/re11)*100;
+						reDiv9 = (doubleAsse/re11)*100;
 			%>
 					<tr>
 						<!-- 구분 -->
 						<th style="text-align:center; "><%=a %></th>											<!-- 순번 -->
 						<th style="text-align:center; "><%=b.getS_affiliation() %></th>							<!-- 소속 -->
-						<th style="text-align:center;"><%=b.getS_name() %><br><%=b.getS_code() %></th>			<!-- 과정명 -->
+						<th style="text-align:center;"><a href="select.so?s_id=<%=b.getS_id()%>"><%=b.getS_name() %><br><%=b.getS_code() %></a></th>			<!-- 과정명 -->
 						<th style="text-align:center;"><%=b.getS_session() %></th>								<!-- 회차 -->
 						<th style="text-align:center;"><%=b.getS_professor() %></th>							<!-- 담임 -->
 						<th style="text-align:center;"><%=b.getS_profession() %></th>							<!-- 직종 -->
@@ -269,7 +296,7 @@ th{
 						<!-- 훈련기간 -->
 						<th style="text-align:center;"><%=b.getS_start() %></th>								<!-- 시작일 -->
 						<th style="text-align:center;"><%=b.getS_end() %></th>									<!-- 종료일 -->
-						<th style="text-align:center;" id="date1" onchange=date123()><%=b.getS_manage()%></th>	<!-- 관리종료 -->
+						<th style="text-align:center;"><%=b.getS_manage()%></th>								<!-- 관리종료 -->
 						<th style="text-align:center;"><%=dm3 %></th>											<!-- 남은일수 -->
 						<!-- 정원 -->
 						<th style="text-align:center;"><%=b.getS_member() %></th>								<!-- 정원 -->
@@ -301,8 +328,8 @@ th{
 						<th style="text-align:center;"><%=(int)re12 %></th>										<!-- 취업인원 -->
 						<th style="text-align:center;"><%=format.format(reDiv4) %>%</th>						<!-- 일반취업률 -->
 						<!-- 취업률 -->
-						<th style="text-align:center;">평가기준</th>												<!-- 평가기준 -->
-						<th style="text-align:center;">평가기준취업률</th>											<!-- 평가기준취업률 -->
+						<th style="text-align:center;"><%=asse %></th>												<!-- 평가기준 -->
+						<th style="text-align:center;"><%=format.format(reDiv9)%>%</th>											<!-- 평가기준취업률 -->
 						<!-- 직종취업률 -->
 						<th style="text-align:center;">직종기준</th>												<!-- 직종기준 -->
 						<th style="text-align:center;">직종기준취업률</th>											<!-- 직종기준취업률 -->
@@ -316,21 +343,32 @@ th{
 						<th style="text-align:center;"><%=(int)cer %></th>										<!-- 자격증 -->
 						<th style="text-align:center;"><%=format.format(cerDiv) %>%</th>						<!-- 자격증취득률 -->
 						<!-- 취업전담제 -->
-						<th style="text-align:center;">전담인원</th>												<!-- 전담인원 -->
+						<th style="text-align:center;"><%=(int)re15 %></th>												<!-- 전담인원 -->
 						<th style="text-align:center;">전담률</th>												<!-- 전담률 -->
 						<!-- 취성패 -->
 						<th style="text-align:center;"><%=b.getS_option() %></th>								<!-- 취성패조회 -->
 						<!-- 과정명 -->
 						<th style="text-align:center;"><%=b.getS_name2() %></th>								<!-- 과정명2 -->
 						<!-- 과정구분 -->
-						<th style="text-align:center;">수료과정</th>												<!-- 수료과정 -->
-						<th style="text-align:center;">종료과정</th>												<!-- 종료과정 -->
+						<th style="text-align:center;">
+						<select name ="m_option2" id = "m_option2Id">
+									<option value = "0"> </option>
+									<option value = "1">1</option>									
+								</select>
+						</th>												<!-- 수료과정 -->
+						<th style="text-align:center;">
+						<select name ="m_option2" id = "m_option2Id">
+									<option value = ""> </option>
+									<option value = "1">1</option>									
+								</select>
+						</th>												<!-- 종료과정 -->
 					</tr>
 				<%
 					}
-				%>			
-				</table>
-			</div>
+				%>		
+				</tbody>	
+			</table>
+	</div>
 </div>
 </div>
 
