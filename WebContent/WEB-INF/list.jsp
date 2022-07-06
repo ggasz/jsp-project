@@ -173,7 +173,7 @@
 										b.getM_option1().equals("실업자일반")){
 									re6 = re6+1;
 								}
-								if(b.getC_except().equals("산정제외") && b.getCo_comple().equals("O") && 
+								if(/* b.getC_except().equals("산정제외") &&  */b.getCo_comple().equals("O") && 
 										b.getM_option1().equals("근로자개인")){
 									re7 = re7+1;
 								}
@@ -266,7 +266,7 @@
 						<th style="background-color:#eeeeee; text-align:center;">성별</th>
 						<th style="background-color:#eeeeee; text-align:center;">유형</th>
 						<th style="background-color:#eeeeee; text-align:center;">구분</th>
-						<th style="background-color:#eeeeee; text-align:center;">비고</th>
+						<!-- <th style="background-color:#eeeeee; text-align:center;">비고</th> -->
 
 						<!-- 수강인원결과  -->
 						<th style="background-color:#eeeeee; text-align:center;">결과</th>
@@ -325,7 +325,7 @@
 						<td><%=b.getM_sex()%></td>
 						<td><%=b.getM_option1()%></td>
 						<td><%=b.getM_option2()%></td>				
-						<td><%=b.getM_note()%></td>
+						<%-- <td><%=b.getM_note()%></td> --%>
 						<!-- 수강인원결과  -->						
 						<td><%=b.getCo_result()%></td>
 						<td><%=b.getCo_attend()%></td>

@@ -194,7 +194,7 @@
 						<tr>
 							<th style = "text-align:center">
 								<label for="cars">입사일</label>
-								<input type = "date" class="form-control"placeholder="입사일" id= "dateId" name="c_start" maxlength="10" value = "1900-01-01" min="0000-00-00" max="3000-12-31" onchange = addDate()>
+								<input type = "date" class="form-control"placeholder="입사일" id= "dateId" name="c_start" maxlength="10"  min="0000-00-00" max="3000-12-31" onchange = addDate()>
 							</th>
 							<th style = "text-align:center">
 								<label for="cars">고용유지</label>
@@ -270,6 +270,7 @@
 	function addDate(){  // 날짜계산
 		month = document.getElementById("dateId").value; //입사일
 		item3 = document.getElementById("item3Id").value; //고용보험
+		comple = document.getElementById("co_compleId").value;	//수료
 		const today = new Date(month);
 		const nextDate = new Date( today.getFullYear(), 
 									today.getMonth()+6 , 
@@ -277,8 +278,10 @@
 		
 		const formatted_date = nextDate.getFullYear() + "-" + (nextDate.getMonth() + 1) + "-" + nextDate.getDate()
 		
-		if(item3 != "X"){
+		if(item3 == "O"){
+			if(comple == "O" || comple =="이수"){
 			insert.c_maintain.value=formatted_date;	
+			}
 		}else{
 			insert.c_maintain.value="";
 		}

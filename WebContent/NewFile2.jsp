@@ -148,6 +148,8 @@
 		
 <!-- 3번째 테이블  -->
 
+
+
 	<div style ="font-size: 11px; margin-top: 50px; width:1000px;" name="insert" >
 			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 				<thead>
@@ -167,8 +169,33 @@
 						<th>평균대비</th>
 					</tr>
 					
-					<tr>
-						<th >1팀</th>
+			<%
+					SubjectDAO subjectDao = SubjectDAO.getInstance();
+					List<SubjectDTO> list = subjectDao.subjectList2();
+					for(SubjectDTO b : list){
+					
+					MemberDAO memberDao = MemberDAO.getInstance();
+					List<MemberJoin> list2 = memberDao.selectList(b.getS_id());
+				
+			%>
+				<tr>
+				<th style="text-align:center; "><%=b.getS_affiliation() %></th>
+				<th style="text-align:center;"><%=b.getS_profession() %></th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				
+				</tr>
+			<%
+					}
+			%>	
+					
+					<%-- <tr>
+						<th ><%= %></th>
 						<th>150102</th>
 						<th>기계설계</th>
 						<th>75.8</th>
@@ -201,7 +228,7 @@
 						<th>#</th>
 						<th>#</th>
 						<th>#</th>
-					</tr>
+					</tr>		
 					
 					<tr>
 						<th>1팀</th>
@@ -213,7 +240,7 @@
 						<th>#</th>
 						<th>#</th>
 						<th>#</th>
-					</tr>
+					</tr> --%>
 				</thead>
 			</table>
 		</div>
