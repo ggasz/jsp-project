@@ -66,7 +66,7 @@
 	
 	<%@ include file = "menu2.jsp" %>
 	
-<div style = "width : 3000px; margin-top : 70px;">
+<div style = "width : 3500px; margin-top : 70px;">
 <div style = "position : sticky; left : 0px; width : 1920px;">
 <!-- 과목정보 -->
 	<div>
@@ -251,14 +251,14 @@
 </div>	
 	
 <!-- 인원리스트  -->
-	<div style= "width : 2950px;white-space: nowrap; margin-left : 15px;"> 
+	<div style= "width : 3480px;white-space: nowrap; margin-left : 15px;"> 
 		<div class = "row" >
 			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
 						<!-- 기본정보 -->
-						<th style="position : sticky; left : 0; background-color:#eeeeee; text-align:center;">번호</th>
-						<th style="position : sticky; left : 49.5px;background-color:#eeeeee; text-align:center;">성명</th>
+						<th style="position : sticky; left : 0; background-color:#eeeeee; text-align:center; width : 48px;">번호</th>
+						<th style="position : sticky; left : 48px;background-color:#eeeeee; text-align:center;">성명</th>
 						<th style="background-color:#eeeeee; text-align:center;">생년월일</th>
 						<th style="background-color:#eeeeee; text-align:center;">전화번호</th>
 						<th style="background-color:#eeeeee; text-align:center;">지역</th>
@@ -316,8 +316,8 @@
 				<tbody>
 					<tr> 
 
-						<td style="position : sticky; left : 0; background-color : #eeeeee;"><%=(int)a %></td> 
-						<td style="position : sticky; left : 49.5px; background-color : #eeeeee;"><a href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
+						<td style="position : sticky; left : 0; background-color : #eeeeee;  width : 48px;"><%=(int)a %></td> 
+						<td style="position : sticky; left : 48px; background-color : #eeeeee;;"><a href="update.do?m_id=<%=b.getM_id()%>"><%=b.getM_name()%></a></td>
 						<td><%=b.getM_birth()%></td>
 						<td><%=b.getM_number()%></td>
 						<td><%=b.getM_area()%></td>

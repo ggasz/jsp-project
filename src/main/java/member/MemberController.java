@@ -209,6 +209,9 @@ public class MemberController extends HttpServlet {
 		String coPorf = req.getParameter("co_porf");
 		String coCer = req.getParameter("co_certificate");
 		//int sId = Integer.parseInt(req.getParameter("s_id"));
+		if(coAsse.equals("")) {
+			coAsse = null;
+		}
 		
 		ConsequenceDAO coDao = ConsequenceDAO.getInstance();
 		ConsequenceDTO coDto = new ConsequenceDTO();
