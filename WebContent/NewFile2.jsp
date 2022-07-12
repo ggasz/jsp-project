@@ -15,7 +15,7 @@
 <meta name='viewport' content="width=device-width",initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>팀별실적</title>
- <%@ include file = "WEB-INF/menu2.jsp"%>
+<%@ include file = "WEB-INF/menu2.jsp" %>
 </head>
 <body>
 
@@ -59,6 +59,8 @@
 	int re9	= 0;	//산정제외 ->수료전
 	double doubleAsse = 0;	//sum(asse) 가중치 취업
 	double doubleAsse2 = 0;	//sum(asse) 가중치 취업
+	double doubleAsse3 = 0;	//가중치 취업
+	double doubleAsse4 = 0;	//가중치 취업
 	double doubleAsse2_1 = 0; //1팀 가중치 취업
 	double doubleAsse2_2 = 0; //2팀 가중치 취업
 	double doubleAsse2_3 = 0; //3팀 가중치 취업
@@ -90,6 +92,7 @@
 					re7 = 0;	//최종수료
 					doubleAsse2 = 0;	//가중치 취업
 					doubleAsse2_1 = 0; 	//1팀 가중치 취업
+					doubleAsse4 = 0;	//1팀 가중치 취업 합계
 					a2 = 0;		//1팀 모집정원
 					b3 = 0;		//1팀 모집인원
 					co2 = 0;	//1팀 수료인원
@@ -116,8 +119,10 @@
 						}
 						if(asse != null){	// 이거 없으면 값 없을때 오류남
 							doubleAsse = Double.parseDouble(asse);
+							doubleAsse3 = Math.round(doubleAsse);
 						}
 						doubleAsse2 = doubleAsse2+doubleAsse;
+						doubleAsse4 = doubleAsse4+doubleAsse3;
 						
 						b = 0;
 						
@@ -139,7 +144,7 @@
 									mj.getM_option1().equals("실업자일반")){
 								re5 = re5+1;
 							}
-							if(mj.getC_except().equals("산정제외") && mj.getCo_comple().equals("O") && 
+							if(/* mj.getC_except().equals("산정제외") && */ mj.getCo_comple().equals("O") && 
 									mj.getM_option1().equals("근로자개인")){
 								re6 = re6+1;
 							}
@@ -176,7 +181,7 @@
 					<th><%=re1 %></th>
 					<th><%=re4 %></th>
 					<th><%=re7 %></th>
-					<th><%=doubleAsse2 %></th>
+					<th><%=(int)doubleAsse4 %></th>
 				</tr>
 				
 				<%
@@ -188,6 +193,7 @@
 					re7 = 0;	//최종수료
 					doubleAsse2 = 0;	//가중치 취업
 					doubleAsse2_2 = 0; 	//2팀 가중치 취업
+					doubleAsse4 = 0;	//1팀 가중치 취업 합계
 					a3 = 0;		//2팀 모집정원
 					b4 = 0;		//2팀 모집인원
 					co3 = 0;	//2팀 수료인원
@@ -214,8 +220,10 @@
 						}
 						if(asse != null){	// 이거 없으면 값 없을때 오류남
 							doubleAsse = Double.parseDouble(asse);
+							doubleAsse3 = Math.round(doubleAsse);
 						}
 						doubleAsse2 = doubleAsse2+doubleAsse;
+						doubleAsse4 = doubleAsse4+doubleAsse3;
 						
 						b=0;		//모집인원
 						for(MemberJoin mj : list4){
@@ -236,7 +244,7 @@
 									mj.getM_option1().equals("실업자일반")){
 								re5 = re5+1;
 							}
-							if(mj.getC_except().equals("산정제외") && mj.getCo_comple().equals("O") && 
+							if(/* mj.getC_except().equals("산정제외") && */ mj.getCo_comple().equals("O") && 
 									mj.getM_option1().equals("근로자개인")){
 								re6 = re6+1;
 							}
@@ -273,8 +281,8 @@
 					<th><%=co %></th>
 					<th><%=re1 %></th>
 					<th><%=re4 %></th>
-					<th><%=re7 %></th> 
-					<th><%=doubleAsse2 %></th>
+					<th><%=re7 %></th>
+					<th><%=(int)doubleAsse4 %></th>
 				</tr>
 				<%
 					List<SubjectDTO> list5 = subjectDao.subjectList5();
@@ -286,6 +294,7 @@
 					a4 = 0;		//3팀 모집정원
 					doubleAsse2 = 0;	//가중치 취업
 					doubleAsse2_3 = 0; //3팀 가중치 취업
+					doubleAsse4 = 0;	//1팀 가중치 취업 합계
 					b5 = 0;		//3팀 모집인원
 					co4 = 0;	//3팀 수료인원
 					re1_3 = 0;	//3팀 중도탈락
@@ -311,8 +320,11 @@
 						}
 						if(asse != null){	// 이거 없으면 값 없을때 오류남
 							doubleAsse = Double.parseDouble(asse);
+							doubleAsse3 = Math.round(doubleAsse);
 						}
 						doubleAsse2 = doubleAsse2+doubleAsse;
+						doubleAsse4 = doubleAsse4+doubleAsse3;
+						
 						
 						b=0;
 	
@@ -335,7 +347,7 @@
 									mj.getM_option1().equals("실업자일반")){
 								re5 = re5+1;
 							}
-							if(mj.getC_except().equals("산정제외") && mj.getCo_comple().equals("O") && 
+							if(/* mj.getC_except().equals("산정제외") && */ mj.getCo_comple().equals("O") && 
 									mj.getM_option1().equals("근로자개인")){
 								re6 = re6+1;
 							}
@@ -380,7 +392,7 @@
 					<th><%=re1 %></th>
 					<th><%=re4 %></th>
 					<th><%=re7 %></th>
-					<th><%=doubleAsse2 %></th>
+					<th><%=(int)doubleAsse4 %></th>
 				</tr>
 				
 				<tr>
@@ -391,7 +403,7 @@
 					<th><%=re1_4 %></th>
 					<th><%=re4_4 %></th>
 					<th><%=re7_4 %></th>
-					<th><%=doubleAsse2_4 %></th>
+					<th><%=Math.round(doubleAsse2_4) %></th>
 				</tr>
 			</thead>
 		</table>
@@ -426,10 +438,10 @@
 					double h2 = ((double)co3/(double)b4)*100;	//2팀 수료율
 					double h3 = ((double)co4/(double)b5)*100;	//3팀 수료율
 					double h4 = ((double)co5/(double)b6)*100;	//total 수료율
-					double i1 = ((double)re1_1/(double)a2)*100;	//1팀 중탈률
-					double i2 = ((double)re1_2/(double)a3)*100;	//2팀 중탈률
-					double i3 = ((double)re1_3/(double)a4)*100;	//3팀 중탈률
-					double i4 = ((double)re1_4/(double)a5)*100;	//totla 중탈률
+					double i1 = ((double)re1_1/(double)b3)*100;	//1팀 중탈률
+					double i2 = ((double)re1_2/(double)b4)*100;	//2팀 중탈률
+					double i3 = ((double)re1_3/(double)b5)*100;	//3팀 중탈률
+					double i4 = ((double)re1_4/(double)b6)*100;	//totla 중탈률
 					double j1 = ((double)re4_1/(double)re7_1)*100;	//1팀 일반취업률
 					double j2 = ((double)re4_2/(double)re7_2)*100;	//2팀 일반취업률
 					double j3 = ((double)re4_3/(double)re7_3)*100;	//3팀 일반취업률
@@ -515,53 +527,109 @@
 						<th>평균대비</th>
 					</tr>
 					
+						<%	
+							String ra = "";				//직종이름	
+							String a = "전기공사";			//직종 190107
+							String b = "용접";			//직종 160105
+							String c = "조경";			//직종 140501
+							String d = "디자인";			//직종 80201
+							
+							double rb = 0;				//전국 취업률
+							double a_a =71.9;			//취업률 190107 
+							double a_b =75.3;
+							double a_c =61.2;
+							double a_d =67.4;
+							double re12 = 0;							
+							int re10=0;						
+							int re11=0;
+							int re88=0;
+						
+							int [] a1 = {190107,160105,140501,80201};
+							for(int i = 0; i<a1.length; i++){
+								MemberDAO memberDao = MemberDAO.getInstance();
+								List<SubjectDTO> list7 = subjectDao.subjectList7(a1[i]);
+								for(SubjectDTO aa : list7){														
+									ra = "";
+									rb = 0;
+									if(aa.getS_profession().equals("190107")){
+										ra = ra + a;
+									}
+									if(aa.getS_profession().equals("160105")){
+										ra = ra+b;
+									}
+									if(aa.getS_profession().equals("140501")){
+										ra = ra+c;
+									}
+									if(aa.getS_profession().equals("80201")){
+										ra = ra+d;
+									}
+									if(aa.getS_profession().equals("190107")){
+										rb = rb + a_a;
+									}
+									if(aa.getS_profession().equals("160105")){
+										rb = rb + a_b;
+									}
+									if(aa.getS_profession().equals("140501")){
+										rb = rb + a_c;
+									}
+									if(aa.getS_profession().equals("80201")){
+										rb = rb + a_d;
+									}									
+									List<SubjectDTO> list2 = subjectDao.subjectList2();
+									
+									re12 =0;
+									re3 =0;
+									re4 =0;
+									re9=0;
+									re10=0;
+									co=0;
+									re11 =0;
+									re88 = 0;
+										for(SubjectDTO aaa : list2){							
+											List<MemberJoin> list11 = memberDao.selectList(aaa.getS_id());
+											
+											for (MemberJoin bbb : list11){
+												if(bbb.getCo_comple().equals("O")){
+													co = co+1;	//수료인원
+												}
+												if(bbb.getCo_result().equals("이수취업")){
+													re3 = re3+1;
+												}
+												if(bbb.getC_except().equals("산정제외") && bbb.getCo_comple().equals("O") && 
+														bbb.getM_option1().equals("실업자일반")){
+													re9 = re9+1;
+												}
+												if(/* bbb.getC_except().equals("산정제외") && */ bbb.getCo_comple().equals("O") && 
+														bbb.getM_option1().equals("근로자개인")){
+													re10 = re10+1;
+												}
+												if(bbb.getCo_result().equals("수료취업")){
+													re4 = re4+1;
+												}
+											
+										}
+									}
+									re11 = (int)co+re3-re9-re10;
+									re88 = re4+re3;
+						%>	 				
 					<tr>
-						<th >1팀</th>
-						<th>150102</th>
-						<th>기계설계</th>
-						<th>75.8</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
+						<th><%=aa.getS_affiliation() %></th>					
+						<th><%=aa.getS_profession() %></th>
+						<th><%=ra %></th>
+						<th><%=rb %></th>										
+						<th></th>
+						<th><%=re11 %></th>
+						<th><%=re88 %></th>
+						<th></th>
+						<th></th>
+									
 					</tr>
+							
 					
-					<tr>
-						<th>1팀</th>
-						<th>150502</th>
-						<th>냉동건조</th>
-						<th>72.8</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-					</tr>
-					
-					<tr>
-						<th>1팀</th>
-						<th>160105</th>
-						<th>용접</th>
-						<th>75.3</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-					</tr>
-					
-					<tr>
-						<th>1팀</th>
-						<th>160105</th>
-						<th>전기공사</th>
-						<th>71.9</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-						<th>#</th>
-					</tr>
+					<%						
+								}
+							}
+					%>
 				</thead>
 			</table>
 		</div>

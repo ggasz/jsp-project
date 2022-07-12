@@ -26,7 +26,7 @@ public class SubjectDTO {
 	}
 	public void setS_id(int s_id) {
 		this.s_id = s_id;
-	}
+	}	
 	public String getS_name() {
 		return s_name;
 	}
